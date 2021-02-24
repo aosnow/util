@@ -12,6 +12,7 @@ export * from './object';
 export * from './array';
 export * from './function';
 
+export * from './merge';
 export * from './url';
 
 export * from './map';

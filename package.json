@@ -1,7 +1,7 @@
 {
 	"name": "@mudas/util",
 	"version": "0.0.1",
-	"description": "A library project using commonjs type",
+	"description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
 	"author": "张雄军 <zxj@blibao.cn>",
 	"license": "MIT",
 	"main": "dist/util.common.js",

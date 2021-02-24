@@ -44,12 +44,12 @@ export function noop() {
 /**
  * 对指定函数进行节流调用，该函数会从上一次被调用后，计时 wait 毫秒后重新开放调用。
  * @param {Function} func 需要节流的函数（若需要对 func 进行传参，请进行二次包装成无需传参的函数壳）
- * @param {Number} [wait=0] 需要延迟的毫秒数（默认：0，即立即调用）
- * @param {Boolean} [leading=true] 指定首次调用是否立即调用，还是延迟 wait 毫秒后调用（默认：true，即首次将立即调用）
+ * @param {Number} [wait=6000] 需要延迟的毫秒数（默认：600ms）
+ * @param {Boolean} [leading=true] 指定 func 是否立即调用，还是延迟 wait 毫秒后调用（默认：true，即立即调用）
  */
-export function debounce(func, wait = 0, leading = true) {
+export function debounce(func, wait = 600, leading = true) {
   let timerId;
-  let invokeCount = 0;
+  let lastTime = 0;
 
   if (!isFunction(func)) {
     throw new TypeError('[debounce] Parameter error, expected a function.');
@@ -58,35 +58,29 @@ export function debounce(func, wait = 0, leading = true) {
   wait = Number(wait) || 0;
 
   function invokeFunc() {
-    func.call(this);
+    if (Date.now() - lastTime >= wait) {
+      func.call(debounced);
+      lastTime = Date.now();
+    }
   }
 
   function invokeTimer() {
-    // 场景：
-    // 1、leading 为 false 的首次调用
-    // 2、第二次开始的调用
-    if (leading && invokeCount === 0) {
-      invokeFunc();
-      invokeCount++;
-    }
-    else {
-      timerId = setTimeout(timerExpired, wait);
-    }
+    if (timerId) return;
+    timerId = setTimeout(timerExpired, wait);
+    debounced.timing = true;
   }
 
   function timerExpired() {
-    if (!leading || (leading && invokeCount > 0)) {
-      invokeFunc();
-      invokeCount++;
-    }
+    if (!leading && debounced.timing) invokeFunc();
     clearTimeout(timerId);
     timerId = null;
+    debounced.timing = false;
   }
 
   function debounced() {
-    if ((leading && invokeCount === 0) || !timerId) {
-      invokeTimer();
-    }
+    if (leading && !debounced.timing) invokeFunc();
+    invokeTimer();
+    console.warn(timerId);
   }
 
   return debounced;

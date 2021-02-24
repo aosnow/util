@@ -1,6 +1,6 @@
 # @mudas/util
 
-> A tools library
+> A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map
 
 ### Usage
 

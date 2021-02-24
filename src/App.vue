@@ -13,12 +13,17 @@
       </div>
     </el-form>
 
+    <pre>{{object}}</pre>
+
+    <el-button @click="clickHandler">merge 值</el-button>
     <el-button @click="handler">执行相关操作</el-button>
 
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+
 import {
   repeat,
   trim,
@@ -34,7 +39,12 @@ import {
   betweenDate,
   random,
   distance,
-  debounce
+  debounce,
+  currency,
+  camelCase,
+  kebabCase,
+  snakeCase,
+  merge
 } from '@mudas/util';
 
 export default {
@@ -45,6 +55,23 @@ export default {
     return {
       value: '',
       value2: '',
+
+      object: {
+        a: [{ b: 2 }, { d: 4 }, 88],
+        b: { b1: 2, b3: { b31: 31 } },
+        c: 0
+      },
+
+      other: {
+        a: [{ c: 3 }, { e: 5 }, [1, 2, 3], 100],
+        b: { b1: 1, b2: { b21: 21 }, b3: { b32: 32 } },
+        c: 100
+      },
+
+      otherB: {
+        a: [{ a1: 8 }],
+        c: { c1: 8 }
+      },
 
       handler: null
     };
@@ -93,11 +120,36 @@ export default {
     this.handler = debounce(() => {
       console.warn('random(-5,5)', random(-5, 5));
     }, 1000, false);
+
+    // console.warn(currency(123654.10, false));
+
+    // console.warn(camelCase('Foo Bar'));
+    // console.warn(camelCase('fooBar'));
+    // console.warn(camelCase('--foo-bar--'));
+    // console.warn(camelCase('__FOO_BAR__'));
+
+    // console.warn(kebabCase('Foo Bar'));
+    // console.warn(kebabCase('fooBar'));
+    // console.warn(kebabCase('__FOO_BAR__'));
+
+    console.warn(snakeCase('Foo Bar'));
+    console.warn(snakeCase('fooBar'));
+    console.warn(snakeCase('--foo-bar--'));
+
   },
 
   methods: {
-    clickHandler() {
+    mergeValue(objValue, srcValue, key, object, source) {
+      console.warn(JSON.stringify(object), key, srcValue);
+      Vue.set(object, key, srcValue);
+    },
 
+    clickHandler() {
+      const t = Date.now();
+      console.warn(t);
+      merge(this.object, this.other, this.otherB, this.mergeValue);
+      console.warn(this.object);
+      console.warn(Date.now() - t);
     }
   }
 };
