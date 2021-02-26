@@ -9,7 +9,7 @@ import { isPlainObject } from './object';
 import { isArray } from './array';
 
 /**
- * 递归合并 sources 来源对象自身和继承的可枚举属性到 object 目标对象
+ * 递归合并 source 来源对象自身和继承的可枚举属性到 object 目标对象
  * <ul>
  * <li>数组和普通对象会递归合并，其他对象和值会被直接分配覆盖</li>
  * <li>源对象从从左到右分配</li>
@@ -37,12 +37,27 @@ import { isArray } from './array';
  */
 export function merge(target, ...source) {
   let customizer;
+  let newData;
 
   if (isFunction(source[source.length - 1])) customizer = source.pop();
 
-  source.forEach(item => {
-    _merge(target, item, customizer);
-  });
+  // 当需要合并的数据来源大于 1 个时，为避免频繁或者重复在相同的属性上调用 customizer
+  // 优先使用默认合并方法，将数据源进行合并，按从右至左的方式保留最终值，以便于保障在相同的属性上只调用一次 customizer
+  if (source.length > 1) {
+    newData = Object.create(null);
+
+    source.forEach(item => {
+      _merge(newData, item, assignValue);
+    });
+  }
+
+  // 若只有一个数据源，只直接视其为最终值
+  else {
+    newData = source[0];
+  }
+
+  // 使用最终值，进行最后的合并
+  _merge(target, newData, customizer);
 
   return target;
 }

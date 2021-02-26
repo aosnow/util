@@ -52,7 +52,7 @@ export function isNumber(value) {
  * // => true
  */
 export function isNumeric(value) {
-  return isNumber(value) || /^\d+(\.\d+)?$/.test(value);
+  return isNumber(value) || /^-?\d+(\.\d+)?$/.test(value);
 }
 
 /**
@@ -84,7 +84,7 @@ export function isNaN(value) {
 }
 
 /**
- * 产生一个包括 lower 与 upper 之间的数。 如果只提供一个参数返回一个0到提供数之间的数。
+ * 产生一个包括 lower 与 upper 之间的随机数。 如果只提供一个参数返回一个0到提供数之间的数。
  * 如果 floating 设为 true，或者 lower 或 upper 是浮点数，结果返回浮点数。
  *
  * **注意**: JavaScript 遵循 IEEE-754 标准处理无法预料的浮点数结果。

@@ -31,7 +31,7 @@ export function isArray(value) {
 }
 
 /**
- * 检查 value 是否是类数组。 如果一个值被认为是类数组，那么它不是一个函数，并且value.length是个整数，大于等于 0，小于或等于 Number.MAX_SAFE_INTEGER。
+ * 检查 value 是否是类数组。 如果一个值被认为是类数组，那么它不是一个函数，并且 `value.length` 是个整数，大于等于 `0`，小于或等于 `Number.MAX_SAFE_INTEGER`。
  *
  * @param {*} value 要检查的值。
  * @returns {boolean} 如果value是一个类数组，那么返回 true，否则返回 false。

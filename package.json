@@ -15,9 +15,12 @@
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "rollup -c",
+    "docs:md": "node ./docs/.vuepress/jsdoc",
+    "docs:dev": "npm run docs:md && vuepress dev docs --no-cache",
+    "docs:build": "npm run docs:md && vuepress build docs",
 		"lint": "vue-cli-service lint",
 		"test:unit": "vue-cli-service test:unit",
-		"pub": "npm run build && npm publish --access=public"
+		"pub": "npm run docs:build && npm run build && npm publish --access=public"
 	},
 	"typings": "types/index.d.ts",
 	"files": [
@@ -43,14 +46,16 @@
 		"@vue/eslint-config-airbnb": "^5.0.2",
 		"@vue/test-utils": "^1.0.3",
 		"babel-eslint": "^10.1.0",
+		"element-ui": "^2.15.0",
 		"eslint": "^6.7.2",
 		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-vue": "^6.2.2",
-		"element-ui": "^2.15.0",
+		"jsdoc-to-markdown": "^6.0.1",
 		"rollup": "^2.6.1",
 		"rollup-plugin-delete": "^1.2.0",
 		"rollup-plugin-vue": "^5.1.6",
 		"vue": "^2.6.12",
-		"vue-template-compiler": "^2.6.12"
+		"vue-template-compiler": "^2.6.12",
+		"vuepress": "^1.8.2"
 	}
 }

@@ -9,9 +9,6 @@ import { isNumber } from './number';
 import { isArray } from './array';
 import { isObjectLike, getTag } from './object';
 
-/** `Object#toString` result references. */
-const dateTag = '[object Date]';
-
 /**
  * 检查 value 是否是 Date 对象。
  *
@@ -19,13 +16,13 @@ const dateTag = '[object Date]';
  * @returns {boolean} 如果 value 是一个日期对象，那么返回 true，否则返回 false。
  */
 export function isDate(value) {
-  return isObjectLike(value) && getTag(value) === dateTag;
+  return isObjectLike(value) && getTag(value) === '[object Date]';
 }
 
 /**
  * 解析字符串时间
  * @param {String} value 如：06:00或者06:00:00（同时支持 '2021-02-01 06:00:00' 的完整日期字符串）
- * @return {{ hour, minute, second }} 小时，分钟，秒数
+ * @return {{ year, month, day, hour, minute, second }} 年，月，日，小时，分钟，秒数
  */
 export function parseTime(value) {
   const ts = value.split(':');
@@ -50,12 +47,13 @@ export function parseTime(value) {
 
 /**
  * 根据指定的自选参数，生成日期对象
- * @param [year]
- * @param [month]
- * @param [day]
- * @param [hour]
- * @param [minute]
- * @param [second]
+ * @param option 日期时间参数
+ * @param {Number} [option.year] 年
+ * @param {Number} [option.month] 月
+ * @param {Number} [option.day] 日
+ * @param {Number} [option.hour] 小时
+ * @param {Number} [option.minute] 分钟
+ * @param {Number} [option.second] 秒
  * @return {Date}
  */
 export function genDate({ year, month, day, hour, minute, second }) {

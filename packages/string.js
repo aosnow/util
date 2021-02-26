@@ -31,7 +31,7 @@ export function trim(input) {
 /**
  * 检查 value 是否是原始字符串String或者对象。
  *
- * @param {*} value
+ * @param {*} value 待检查的值
  * @returns {boolean} 如果 value 为一个字符串，那么返回 true，否则返回 false。
  * @example
  *

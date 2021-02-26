@@ -6,8 +6,8 @@
 
 /**
  * 检查 value 是否是 null
- * @param value
- * @return {boolean}
+ * @param {*} value 待检查的值
+ * @return {boolean} 如果 value 为 null，那么返回 true，否则返回 false。
  *
  * @example
  *
@@ -23,8 +23,8 @@ export function isNull(value) {
 
 /**
  * 检查 value 是否是 null 或者 undefined
- * @param value
- * @return {boolean} 如果 value 为null 或 undefined，那么返回 true，否则返回 false。
+ * @param {*} value 待检查的值
+ * @return {boolean} 如果 value 为 null 或 undefined，那么返回 true，否则返回 false。
  *
  * @example
  *

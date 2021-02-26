@@ -9,8 +9,8 @@ const tag = '[object Object]';
 
 /**
  * 取得指定数据的原始类型（如 [object Object]）
- * @param {*} value
- * @return {string}
+ * @param {*} value 待检查的值
+ * @return {string} 类型标识，如 `[object Object]`
  */
 export function getTag(value) {
   return toString.call(value);
@@ -21,8 +21,8 @@ export function getTag(value) {
  * [类型](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
  * (如 arrays, functions, objects, regexes, `new Number(0)`, 和 `new String('')`)
  *
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @param {*} value 待检查的值
+ * @returns {boolean} 如果 value 是一个 Object 类型，那么返回 true，否则返回 false。
  * @example
  *
  * isObject({});
@@ -44,8 +44,8 @@ export function isObject(value) {
 
 /**
  * 检查 value 是否为类似 Object 类型（如 {}、arrays等，但不包含 null、undefined、function）
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @param {*} value 待检查的值
+ * @returns {boolean} 如果 value 是一个类似 Object 对象类型，那么返回 true，否则返回 false。
  * @example
  *
  * isObjectLike({});
@@ -66,8 +66,8 @@ export function isObjectLike(value) {
 
 /**
  * 检查 value 是否是普通对象。 也就是说该对象由 Object 构造函数创建，或者 prototype 为 null 。
- * @param value
- * @return {boolean}
+ * @param {*} value 待检查的值
+ * @return {boolean} 如果 value 是一个普通对象，那么返回 true，否则返回 false。
  *
  * @example
  * function Foo() {
