@@ -47,7 +47,7 @@ export function merge(target, ...source) {
     newData = Object.create(null);
 
     source.forEach(item => {
-      _merge(newData, item, assignValue);
+      _merge(newData, item, _assignValue);
     });
   }
 
@@ -62,7 +62,7 @@ export function merge(target, ...source) {
   return target;
 }
 
-export function assignValue(objValue, srcValue, key, object, source) {
+export function _assignValue(objValue, srcValue, key, object, source) {
   if (key === '__proto__' && Object.defineProperty) {
     Object.defineProperty(object, key, {
       configurable: true,
@@ -77,7 +77,7 @@ export function assignValue(objValue, srcValue, key, object, source) {
 }
 
 function _merge(target, source, customizer) {
-  const assign = customizer || assignValue;
+  const assign = customizer || _assignValue;
 
   if (isPlainObject(source) || isArray(source)) {
     Object.keys(source).forEach(key => {

@@ -2,6 +2,8 @@
 
 > A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map
 
+**说明：**
+该工具同样适用于小程序开发环境（尤其是 uni-app 开发环境），旨在小程序开发中替代 lodash，且与 H5 项目实现工具统一。
 
 ## 快速安装
 ```bash
