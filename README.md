@@ -5,6 +5,9 @@
 **说明：**
 该工具同样适用于小程序开发环境（尤其是 uni-app 开发环境），旨在小程序开发中替代 lodash，且与 H5 项目实现工具统一。
 
+**文档：** [点击查阅使用手册](https://aosnow.github.io/util/)
+
+
 ## 快速安装
 ```bash
 npm install @mudas/util -S
