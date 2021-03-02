@@ -77,7 +77,11 @@ export function _assignValue(objValue, srcValue, key, object, source) {
 }
 
 function _merge(target, source, customizer) {
-  const assign = customizer || _assignValue;
+  const assignMethod = function(objValue, srcValue, key, object, source) {
+    if (srcValue !== object[key]) {
+      (customizer || _assignValue)(objValue, srcValue, key, object, source);
+    }
+  };
 
   if (isPlainObject(source) || isArray(source)) {
     Object.keys(source).forEach(key => {
@@ -88,16 +92,16 @@ function _merge(target, source, customizer) {
       if (isPlainObject(src)) {
         // 若 dest 为非对称类型，则直接覆盖原有值
         if (target[key] === undefined || !isPlainObject(target[key])) {
-          assign(target[key], src, key, target, source);
+          assignMethod(target[key], src, key, target, source);
         }
         else {
           Object.keys(src).forEach(childKey => {
             const destChildValue = target[key][childKey];
             if (destChildValue === undefined || (!isPlainObject(destChildValue) && !isArray(destChildValue))) {
-              assign(destChildValue, src[childKey], childKey, target[key], src);
+              assignMethod(destChildValue, src[childKey], childKey, target[key], src);
             }
             else {
-              _merge(destChildValue, src[childKey], assign);
+              _merge(destChildValue, src[childKey], assignMethod);
             }
           });
         }
@@ -105,7 +109,7 @@ function _merge(target, source, customizer) {
       else if (isArray(src)) {
         // 若 dest 为值类型，则舍弃原有值
         if (!isPlainObject(target[key]) && !isArray(target[key])) {
-          assign(target[key], src, key, target, source);
+          assignMethod(target[key], src, key, target, source);
         }
         else {
           Object.keys(src).forEach(index => {
@@ -115,15 +119,15 @@ function _merge(target, source, customizer) {
             // 数组元素为复杂数据类型
             if (isPlainObject(srcValue) || isArray(srcValue)) {
               if (!isPlainObject(destValue) && !isArray(destValue)) {
-                assign(destValue, srcValue, index, target[key], src);
+                assignMethod(destValue, srcValue, index, target[key], src);
               }
               else {
-                _merge(destValue, srcValue, assign);
+                _merge(destValue, srcValue, assignMethod);
               }
             }
             // 数组元素为简单值类型
             else {
-              assign(destValue, srcValue, index, target[key], src);
+              assignMethod(destValue, srcValue, index, target[key], src);
             }
           });
         }
@@ -132,7 +136,7 @@ function _merge(target, source, customizer) {
       else {
         // 值类型直接由 srcValue 覆盖 objValue
         // isString、isNumber、isBoolean、isNull
-        assign(target[key], src, key, target, source);
+        assignMethod(target[key], src, key, target, source);
       }
 
     });

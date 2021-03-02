@@ -63,7 +63,7 @@ module.exports = {
     config.resolve.alias.set('@mudas/util', resolve('packages'));
 
     // 打包后的测试别名
-    // config.resolve.alias.set('@mudas/util', resolve('dist/checker.common.js'));
+    // config.resolve.alias.set('@mudas/util', resolve('dist/util.common.js'));
 
   }
 };
