@@ -8,14 +8,29 @@
  * 重复字符串指定的次数
  * @param {String} input 输入源
  * @param {Number} [size] 需要重复的次数
+ * @return {String}
+ *
+ * @example
+ *
+ * repeat('a');
+ * // => 'aaa'
+ *
+ * repeat('good!');
+ * // => 'good!good!good!'
  */
-export declare function repeat(input: string, size: number): boolean;
+export declare function repeat(input: string, size: number): string;
 
 /**
  * 去除字符串首尾的空格
  * @param {String} input 输入源
+ * @return {String}
+ *
+ * @example
+ *
+ * trim(' a bc   ');
+ * // => 'a bc'
  */
-export declare function trim(input: string): boolean;
+export declare function trim(input: string): string;
 
 /**
  * 检查 value 是否是原始字符串String或者对象。

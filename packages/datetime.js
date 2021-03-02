@@ -23,6 +23,14 @@ export function isDate(value) {
  * 解析字符串时间
  * @param {String} value 如：06:00或者06:00:00（同时支持 '2021-02-01 06:00:00' 的完整日期字符串）
  * @return {{ year, month, day, hour, minute, second }} 年，月，日，小时，分钟，秒数
+ *
+ * @example
+ *
+ * parseTime('06:00'); // now at '2021-03-02 16:00'
+ * // => { year:2021, month:3, day:2, hour:6, minute:0, second:0 }
+ *
+ * parseTime('2021-03-02 16:00:00');
+ * // => { year:2021, month:3, day:2, hour:16, minute:0, second:0 }
  */
 export function parseTime(value) {
   const ts = value.split(':');
@@ -47,6 +55,7 @@ export function parseTime(value) {
 
 /**
  * 根据指定的自选参数，生成日期对象
+ * <p>该方法的参数一般可使用 parseTime 进行得到。</p>
  * @param option 日期时间参数
  * @param {Number} [option.year] 年
  * @param {Number} [option.month] 月
@@ -55,6 +64,11 @@ export function parseTime(value) {
  * @param {Number} [option.minute] 分钟
  * @param {Number} [option.second] 秒
  * @return {Date}
+ *
+ * @example
+ *
+ * genDate({year:2021, month:3, day:2, hour:16});
+ * // => Date
  */
 export function genDate({ year, month, day, hour, minute, second }) {
   const date = new Date();

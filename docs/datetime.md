@@ -9,7 +9,7 @@
 </dd>
 <dt><a href="#genDate">genDate(option)</a> ⇒ <code>Date</code></dt>
 <dd><p>根据指定的自选参数，生成日期对象</p>
-</dd>
+<p>该方法的参数一般可使用 parseTime 进行得到。</p></dd>
 <dt><a href="#betweenDate">betweenDate(businessTime, [now])</a> ⇒ <code>boolean</code></dt>
 <dd><p>检测当前时间是否在指定时间范围内（毫秒级对比，一般用于检测当前时间是否在店铺营业时间范围内）</p>
 </dd>
@@ -45,10 +45,19 @@
 | --- | --- | --- |
 | value | <code>String</code> | 如：06:00或者06:00:00（同时支持 '2021-02-01 06:00:00' 的完整日期字符串） |
 
+**Example**  
+```js
+parseTime('06:00'); // now at '2021-03-02 16:00'
+// => { year:2021, month:3, day:2, hour:6, minute:0, second:0 }
+
+parseTime('2021-03-02 16:00:00');
+// => { year:2021, month:3, day:2, hour:16, minute:0, second:0 }
+```
 <a name="genDate"></a>
 
 ## genDate(option) ⇒ <code>Date</code>
 根据指定的自选参数，生成日期对象
+<p>该方法的参数一般可使用 parseTime 进行得到。</p>
 
 **Kind**: global function  
 
@@ -62,6 +71,11 @@
 | [option.minute] | <code>Number</code> | 分钟 |
 | [option.second] | <code>Number</code> | 秒 |
 
+**Example**  
+```js
+genDate({year:2021, month:3, day:2, hour:16});
+// => Date
+```
 <a name="betweenDate"></a>
 
 ## betweenDate(businessTime, [now]) ⇒ <code>boolean</code>
@@ -76,7 +90,8 @@
 
 **Example**  
 ```js
-betweenDate('08:08:59~23:08:59');// => true // now at '10:08:59'
+betweenDate('08:08:59~23:08:59');
+// => true // now at '10:08:59'
 ```
 <a name="dateformat"></a>
 
@@ -92,7 +107,14 @@ betweenDate('08:08:59~23:08:59');// => true // now at '10:08:59'
 
 **Example**  
 ```js
-dateformat('2021/02/20 08:08:59');// => 2021-02-20dateformat('2021/02/20 08:08:59', 'YYYY-MM-DD HH:mm:ss');// => 2021-02-20 08:08:59dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');// => 2021-01-30 07:10:35
+dateformat('2021/02/20 08:08:59');
+// => 2021-02-20
+
+dateformat('2021/02/20 08:08:59', 'YYYY-MM-DD HH:mm:ss');
+// => 2021-02-20 08:08:59
+
+dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');
+// => 2021-01-30 07:10:35
 ```
 <a name="times"></a>
 
@@ -109,5 +131,9 @@ dateformat('2021/02/20 08:08:59');// => 2021-02-20dateformat('2021/02/20 08:0
 
 **Example**  
 ```js
-times(9000760);// => '2小时30分0秒'times(9000760, false);// => '3小时'
+times(9000760);
+// => '2小时30分0秒'
+
+times(9000760, false);
+// => '3小时'
 ```

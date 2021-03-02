@@ -24,59 +24,59 @@ module.exports = {
     displayAllHeaders: true,
     smoothScroll: true,
     nav: [
-      { text: '首页', link: '/' },
-      { text: '指南', link: '/guide' },
+      { text: '首页', link: './' },
+      { text: '指南', link: './guide' },
       { text: 'Github', link: 'https://github.com/aosnow/util', target: '_blank' }
     ],
 
     sidebar: [
-      ['/guide', '快速上手指南'],
+      ['./guide', '快速上手指南'],
       {
         title: '数据类型工具',
-        path: '/boolean',
+        path: './boolean',
         children: [
-          ['/boolean', 'boolean 布尔值工具'],
-          ['/number', 'number 数值工具'],
-          ['/string', 'string 字符串工具'],
-          ['/object', 'object 对象工具'],
-          ['/null', 'null 空值工具'],
-          ['/array', 'array 数组工具'],
-          ['/function', 'function 函数工具']
+          ['./boolean', 'boolean 布尔值工具'],
+          ['./number', 'number 数值工具'],
+          ['./string', 'string 字符串工具'],
+          ['./object', 'object 对象工具'],
+          ['./null', 'null 空值工具'],
+          ['./array', 'array 数组工具'],
+          ['./function', 'function 函数工具']
         ]
       },
       {
         title: '日期时间工具',
-        path: '/datetime',
+        path: './datetime',
         children: [
-          ['/datetime', 'datetime 日期时间工具']
+          ['./datetime', 'datetime 日期时间工具']
         ]
       },
       {
         title: '数据深度合并工具',
-        path: '/merge',
+        path: './merge',
         children: [
           ['/merge', 'merge 合并工具']
         ]
       },
       {
         title: '货币工具',
-        path: '/currency',
+        path: './currency',
         children: [
-          ['/currency', 'currency 货币工具']
+          ['./currency', 'currency 货币工具']
         ]
       },
       {
         title: '地图工具',
-        path: '/map',
+        path: './map',
         children: [
-          ['/map', 'map 地图工具']
+          ['./map', 'map 地图工具']
         ]
       },
       {
         title: 'URL 地址处理工具',
-        path: '/url',
+        path: './url',
         children: [
-          ['/url', 'url 地址工具']
+          ['./url', 'url 地址工具']
         ]
       }
     ]

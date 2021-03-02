@@ -24,22 +24,22 @@ isArray([1, 2, 3]);
 ```
 
 ## 工具目录
-[快速上手指南](/guide)
+[快速上手指南](./guide)
 ### 数据类型工具
-- [boolean 布尔值工具](/boolean)
-- [number 数值工具](/number)
-- [string 字符串工具](/string)
-- [object 对象工具](/object)
-- [null 空值工具](/null)
-- [array 数组工具](/array)
-- [function 函数工具](/function)
+- [boolean 布尔值工具](./boolean)
+- [number 数值工具](./number)
+- [string 字符串工具](./string)
+- [object 对象工具](./object)
+- [null 空值工具](./null)
+- [array 数组工具](./array)
+- [function 函数工具](./function)
 ### 日期时间工具
-- [datetime 日期时间工具](/datetime)
+- [datetime 日期时间工具](./datetime)
 ### 数据深度合并工具
 - [merge 合并工具](/merge)
 ### 货币工具
-- [currency 货币工具](/currency)
+- [currency 货币工具](./currency)
 ### 地图工具
-- [map 地图工具](/map)
+- [map 地图工具](./map)
 ### URL 地址处理工具
-- [url 地址工具](/url)
+- [url 地址工具](./url)

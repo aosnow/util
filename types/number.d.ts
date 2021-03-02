@@ -100,5 +100,13 @@ export declare function random(lower: number, upper: number, floating: boolean):
  * @param {Number} size 需要保留的小数位数
  * @param {Function} [processor=Math.round] 截断小数的处理函数，默认使用四舍五入函数
  * @return {Number}
+ *
+ * @example
+ *
+ * toFixed(1.468468, 2);
+ * // => 1.47
+ *
+ * toFixed(1.468468, 2, Math.floor);
+ * // => 1.46
  */
 export declare function toFixed(value: number, size: number, processor: Function): number;

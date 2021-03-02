@@ -10,6 +10,15 @@ const CASE_WORD = /([a-zA-Z][a-z0-9]*)/g;
  * 重复字符串指定的次数
  * @param {String} input 输入源
  * @param {Number} [size] 需要重复的次数
+ * @return {String}
+ *
+ * @example
+ *
+ * repeat('a');
+ * // => 'aaa'
+ *
+ * repeat('good!');
+ * // => 'good!good!good!'
  */
 export function repeat(input, size = 3) {
   let r = '';
@@ -23,6 +32,12 @@ export function repeat(input, size = 3) {
 /**
  * 去除字符串首尾的空格
  * @param {String} input 输入源
+ * @return {String}
+ *
+ * @example
+ *
+ * trim(' a bc   ');
+ * // => 'a bc'
  */
 export function trim(input) {
   return input.replace(/^\s*(.*?)\s*$/i, '$1');

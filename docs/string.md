@@ -1,10 +1,10 @@
 ## Functions
 
 <dl>
-<dt><a href="#repeat">repeat(input, [size])</a></dt>
+<dt><a href="#repeat">repeat(input, [size])</a> ⇒ <code>String</code></dt>
 <dd><p>重复字符串指定的次数</p>
 </dd>
-<dt><a href="#trim">trim(input)</a></dt>
+<dt><a href="#trim">trim(input)</a> ⇒ <code>String</code></dt>
 <dd><p>去除字符串首尾的空格</p>
 </dd>
 <dt><a href="#isString">isString(value)</a> ⇒ <code>boolean</code></dt>
@@ -23,7 +23,7 @@
 
 <a name="repeat"></a>
 
-## repeat(input, [size])
+## repeat(input, [size]) ⇒ <code>String</code>
 重复字符串指定的次数
 
 **Kind**: global function  
@@ -33,9 +33,17 @@
 | input | <code>String</code> | 输入源 |
 | [size] | <code>Number</code> | 需要重复的次数 |
 
+**Example**  
+```js
+repeat('a');
+// => 'aaa'
+
+repeat('good!');
+// => 'good!good!good!'
+```
 <a name="trim"></a>
 
-## trim(input)
+## trim(input) ⇒ <code>String</code>
 去除字符串首尾的空格
 
 **Kind**: global function  
@@ -44,6 +52,11 @@
 | --- | --- | --- |
 | input | <code>String</code> | 输入源 |
 
+**Example**  
+```js
+trim(' a bc   ');
+// => 'a bc'
+```
 <a name="isString"></a>
 
 ## isString(value) ⇒ <code>boolean</code>
@@ -58,7 +71,11 @@
 
 **Example**  
 ```js
-isString('abc');// => trueisString(1);// => false
+isString('abc');
+// => true
+
+isString(1);
+// => false
 ```
 <a name="camelCase"></a>
 
@@ -74,7 +91,17 @@ isString('abc');// => trueisString(1);// => false
 
 **Example**  
 ```js
-camelCase('Foo Bar');// => 'fooBar'camelCase('--foo-bar--');// => 'fooBar'camelCase('__FOO_BAR__');// => 'fooBar'camelCase('fooBar');// => 'fooBar'
+camelCase('Foo Bar');
+// => 'fooBar'
+
+camelCase('--foo-bar--');
+// => 'fooBar'
+
+camelCase('__FOO_BAR__');
+// => 'fooBar'
+
+camelCase('fooBar');
+// => 'fooBar'
 ```
 <a name="kebabCase"></a>
 
@@ -90,7 +117,14 @@ camelCase('Foo Bar');// => 'fooBar'camelCase('--foo-bar--');// => 'fooBar'
 
 **Example**  
 ```js
-kebabCase('Foo Bar');// => 'foo-bar'kebabCase('fooBar');// => 'foo-bar'kebabCase('__FOO_BAR__');// => 'foo-bar'
+kebabCase('Foo Bar');
+// => 'foo-bar'
+
+kebabCase('fooBar');
+// => 'foo-bar'
+
+kebabCase('__FOO_BAR__');
+// => 'foo-bar'
 ```
 <a name="snakeCase"></a>
 
@@ -106,5 +140,12 @@ kebabCase('Foo Bar');// => 'foo-bar'kebabCase('fooBar');// => 'foo-bar'keb
 
 **Example**  
 ```js
-snakeCase('Foo Bar');// => 'foo_bar'snakeCase('fooBar');// => 'foo_bar'snakeCase('--FOO-BAR--');// => 'foo_bar'
+snakeCase('Foo Bar');
+// => 'foo_bar'
+
+snakeCase('fooBar');
+// => 'foo_bar'
+
+snakeCase('--FOO-BAR--');
+// => 'foo_bar'
 ```
