@@ -12,8 +12,7 @@
 <a name="distance"></a>
 
 ## distance(value, fixed, unit) ⇒ <code>string</code>
-格式化距离字段带单位输出
-<p>小于1000时单位为'm'，大于1000时单位为'km'</p>
+格式化距离字段带单位输出<p>小于1000时单位为'm'，大于1000时单位为'km'</p>
 
 **Kind**: global function  
 
@@ -25,11 +24,7 @@
 
 **Example**  
 ```js
-distance(2520);
-// => '2.5km'
-
-distance(520);
-// => '520m'
+distance(2520);// => '2.5km'distance(520);// => '520m'
 ```
 <a name="measureDistance"></a>
 

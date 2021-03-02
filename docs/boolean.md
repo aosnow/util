@@ -22,14 +22,7 @@
 
 **Example**  
 ```js
-isBoolean(true);
-// => true
-
-isBoolean(false);
-// => true
-
-isBoolean(0);
-// => false
+isBoolean(true);// => trueisBoolean(false);// => trueisBoolean(0);// => false
 ```
 <a name="isFalse"></a>
 
@@ -44,18 +37,5 @@ isBoolean(0);
 
 **Example**  
 ```js
-isFalse(true);
-// => false
-
-isFalse(false);
-// => true
-
-isFalse('');
-// => true
-
-isFalse([]);
-// => true
-
-isFalse(0);
-// => false
+isFalse(true);// => falseisFalse(false);// => trueisFalse('');// => trueisFalse([]);// => trueisFalse(0);// => false
 ```

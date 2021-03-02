@@ -32,9 +32,7 @@
 <a name="isObject"></a>
 
 ## isObject(value) ⇒ <code>boolean</code>
-检测 value 是否为 `Object`
-[类型](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
-(如 arrays, functions, objects, regexes, `new Number(0)`, 和 `new String('')`)
+检测 value 是否为 `Object`[类型](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)(如 arrays, functions, objects, regexes, `new Number(0)`, 和 `new String('')`)
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - 如果 value 是一个 Object 类型，那么返回 true，否则返回 false。  
@@ -45,17 +43,7 @@
 
 **Example**  
 ```js
-isObject({});
-// => true
-
-isObject([1, 2, 3]);
-// => true
-
-isObject(noop);
-// => true
-
-isObject(null);
-// => false
+isObject({});// => trueisObject([1, 2, 3]);// => trueisObject(noop);// => trueisObject(null);// => false
 ```
 <a name="isObjectLike"></a>
 
@@ -71,17 +59,7 @@ isObject(null);
 
 **Example**  
 ```js
-isObjectLike({});
-// => true
-
-isObjectLike([1, 2, 3]);
-// => true
-
-isObjectLike(noop);
-// => false
-
-isObjectLike(null);
-// => false
+isObjectLike({});// => trueisObjectLike([1, 2, 3]);// => trueisObjectLike(noop);// => falseisObjectLike(null);// => false
 ```
 <a name="isPlainObject"></a>
 
@@ -97,19 +75,5 @@ isObjectLike(null);
 
 **Example**  
 ```js
-function Foo() {
- this.a = 1;
-}
-
-isPlainObject(new Foo);
-// => false
-
-isPlainObject([1, 2, 3]);
-// => false
-
-isPlainObject({ 'x': 0, 'y': 0 });
-// => true
-
-isPlainObject(Object.create(null));
-// => true
+function Foo() { this.a = 1;}isPlainObject(new Foo);// => falseisPlainObject([1, 2, 3]);// => falseisPlainObject({ 'x': 0, 'y': 0 });// => trueisPlainObject(Object.create(null));// => true
 ```

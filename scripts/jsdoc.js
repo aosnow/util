@@ -8,9 +8,9 @@ const fs = require('fs');
 const path = require('path');
 const jsdoc2md = require('jsdoc-to-markdown');
 
-const PATH_DOC = resolve('../');
+const PATH_DOC = resolve('../docs/');
+const libPath = resolve('../packages');
 
-const libPath = './packages';
 const template = `{{>main}}`;
 const dir = fs.readdirSync(libPath, { withFileTypes: true });
 
@@ -34,7 +34,7 @@ dir.forEach(file => {
 jsdoc2md.clear();
 
 // 生成 guide 导航页
-const guideGroup = require('./config').themeConfig.sidebar;
+const guideGroup = require('../docs/.vuepress/config').themeConfig.sidebar;
 let guideData = `
 ## 快速安装
 \`\`\`bash

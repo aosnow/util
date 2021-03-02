@@ -58,11 +58,7 @@
 
 **Example**  
 ```js
-isString('abc');
-// => true
-
-isString(1);
-// => false
+isString('abc');// => trueisString(1);// => false
 ```
 <a name="camelCase"></a>
 
@@ -78,17 +74,7 @@ isString(1);
 
 **Example**  
 ```js
-camelCase('Foo Bar');
-// => 'fooBar'
-
-camelCase('--foo-bar--');
-// => 'fooBar'
-
-camelCase('__FOO_BAR__');
-// => 'fooBar'
-
-camelCase('fooBar');
-// => 'fooBar'
+camelCase('Foo Bar');// => 'fooBar'camelCase('--foo-bar--');// => 'fooBar'camelCase('__FOO_BAR__');// => 'fooBar'camelCase('fooBar');// => 'fooBar'
 ```
 <a name="kebabCase"></a>
 
@@ -104,14 +90,7 @@ camelCase('fooBar');
 
 **Example**  
 ```js
-kebabCase('Foo Bar');
-// => 'foo-bar'
-
-kebabCase('fooBar');
-// => 'foo-bar'
-
-kebabCase('__FOO_BAR__');
-// => 'foo-bar'
+kebabCase('Foo Bar');// => 'foo-bar'kebabCase('fooBar');// => 'foo-bar'kebabCase('__FOO_BAR__');// => 'foo-bar'
 ```
 <a name="snakeCase"></a>
 
@@ -127,12 +106,5 @@ kebabCase('__FOO_BAR__');
 
 **Example**  
 ```js
-snakeCase('Foo Bar');
-// => 'foo_bar'
-
-snakeCase('fooBar');
-// => 'foo_bar'
-
-snakeCase('--FOO-BAR--');
-// => 'foo_bar'
+snakeCase('Foo Bar');// => 'foo_bar'snakeCase('fooBar');// => 'foo_bar'snakeCase('--FOO-BAR--');// => 'foo_bar'
 ```

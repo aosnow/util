@@ -26,11 +26,7 @@
 
 **Example**  
 ```js
-isFunction(noop);
-// => true
-
-isFunction(/abc/);
-// => false
+isFunction(noop);// => trueisFunction(/abc/);// => false
 ```
 <a name="noop"></a>
 

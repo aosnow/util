@@ -76,8 +76,7 @@
 
 **Example**  
 ```js
-betweenDate('08:08:59~23:08:59');
-// => true // now at '10:08:59'
+betweenDate('08:08:59~23:08:59');// => true // now at '10:08:59'
 ```
 <a name="dateformat"></a>
 
@@ -93,14 +92,7 @@ betweenDate('08:08:59~23:08:59');
 
 **Example**  
 ```js
-dateformat('2021/02/20 08:08:59');
-// => 2021-02-20
-
-dateformat('2021/02/20 08:08:59', 'YYYY-MM-DD HH:mm:ss');
-// => 2021-02-20 08:08:59
-
-dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');
-// => 2021-01-30 07:10:35
+dateformat('2021/02/20 08:08:59');// => 2021-02-20dateformat('2021/02/20 08:08:59', 'YYYY-MM-DD HH:mm:ss');// => 2021-02-20 08:08:59dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');// => 2021-01-30 07:10:35
 ```
 <a name="times"></a>
 
@@ -117,9 +109,5 @@ dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');
 
 **Example**  
 ```js
-times(9000760);
-// => '2小时30分0秒'
-
-times(9000760, false);
-// => '3小时'
+times(9000760);// => '2小时30分0秒'times(9000760, false);// => '3小时'
 ```

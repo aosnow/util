@@ -36,14 +36,7 @@
 
 **Example**  
 ```js
-isAbsoluteURL('http://www.xxx.com');
-// => true
-
-isAbsoluteURL('ftp://200.0.0.1/xxx');
-// => true
-
-isAbsoluteURL('/upload/xxx.jpg');
-// => false
+isAbsoluteURL('http://www.xxx.com');// => trueisAbsoluteURL('ftp://200.0.0.1/xxx');// => trueisAbsoluteURL('/upload/xxx.jpg');// => false
 ```
 <a name="mergeURL"></a>
 
@@ -59,9 +52,5 @@ isAbsoluteURL('/upload/xxx.jpg');
 
 **Example**  
 ```js
-mergeURL('http://img.xxx.com', '2021-01-30', 'upload/xxx.jpg');
-// => 'http://img.xxx.com/2021-01-30/upload/xxx.jpg'
-
-mergeURL('2021-01-30', 'upload/xxx.jpg');
-// => '2021-01-30/upload/xxx.jpg'
+mergeURL('http://img.xxx.com', '2021-01-30', 'upload/xxx.jpg');// => 'http://img.xxx.com/2021-01-30/upload/xxx.jpg'mergeURL('2021-01-30', 'upload/xxx.jpg');// => '2021-01-30/upload/xxx.jpg'
 ```

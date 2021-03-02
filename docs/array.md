@@ -26,17 +26,7 @@
 
 **Example**  
 ```js
-isArray([1, 2, 3]);
-// => true
-
-isArray(document.body.children);
-// => false
-
-isArray('abc');
-// => false
-
-isArray(noop);
-// => false
+isArray([1, 2, 3]);// => trueisArray(document.body.children);// => falseisArray('abc');// => falseisArray(noop);// => false
 ```
 <a name="isArrayLike"></a>
 
@@ -52,17 +42,7 @@ isArray(noop);
 
 **Example**  
 ```js
-isArrayLike([1, 2, 3]);
-// => true
-
-isArrayLike(document.body.children);
-// => true
-
-isArrayLike('abc');
-// => true
-
-isArrayLike(noop);
-// => false
+isArrayLike([1, 2, 3]);// => trueisArrayLike(document.body.children);// => trueisArrayLike('abc');// => trueisArrayLike(noop);// => false
 ```
 <a name="isEmptyArray"></a>
 
@@ -78,9 +58,5 @@ isArrayLike(noop);
 
 **Example**  
 ```js
-isEmptyArray([1, 2, 3]);
-// => false
-
-isEmptyArray([]);
-// => true
+isEmptyArray([1, 2, 3]);// => falseisEmptyArray([]);// => true
 ```
