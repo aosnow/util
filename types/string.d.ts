@@ -100,3 +100,19 @@ export declare function kebabCase(value): string;
  * // => 'foo_bar'
  */
 export declare function snakeCase(value): string;
+
+/**
+ * 生成 sha1 乱码串
+ * @param {String|Number|Boolean} [input='']
+ * @param {Boolean} [random=true] 默认生成随机串（每次结果不同）
+ * @return {String} sha格式乱码串
+ *
+ * @example
+ *
+ * hash();
+ * => 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
+ *
+ * hash(false);
+ * => 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
+ */
+export function hash(input?: string, random?: boolean): string;

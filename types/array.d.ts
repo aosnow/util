@@ -45,17 +45,3 @@ export declare function isArray(value): boolean;
  * // => false
  */
 export declare function isArrayLike(value): boolean;
-
-/**
- * 检测 `value` 是否为不包含任何元素的空 `Array` 对象。
- * @param value 要检查的值。
- * @returns {boolean} 如果value是一个空数组返回 true（非数组同样将返回 true），否则返回 false。
- * @example
- *
- * isEmptyArray([1, 2, 3]);
- * // => false
- *
- * isEmptyArray([]);
- * // => true
- */
-export declare function isEmptyArray(value): boolean;
