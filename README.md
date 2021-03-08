@@ -38,7 +38,8 @@ isArray([1, 2, 3]);
 - number 数值工具
 - string 字符串工具
 - object 对象工具
-- null 空值工具
+- null 工具
+- empty 空值工具
 - array 数组工具
 - function 函数工具
 ### 日期时间工具
