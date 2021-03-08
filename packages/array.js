@@ -54,19 +54,3 @@ export function isArrayLike(value) {
          && !isFunction(value)
          && (typeof value.length === 'number' && value.length > -1 && value.length % 1 === 0 && value.length <= Number.MAX_SAFE_INTEGER);
 }
-
-/**
- * 检测 `value` 是否为不包含任何元素的空 `Array` 对象。
- * @param value 要检查的值。
- * @returns {boolean} 如果value是一个空数组返回 true（非数组同样将返回 true），否则返回 false。
- * @example
- *
- * isEmptyArray([1, 2, 3]);
- * // => false
- *
- * isEmptyArray([]);
- * // => true
- */
-export function isEmptyArray(value) {
-  return !isArray(value) || value.length === 0;
-}

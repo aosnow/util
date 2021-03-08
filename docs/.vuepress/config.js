@@ -39,7 +39,8 @@ module.exports = {
           ['./number', 'number 数值工具'],
           ['./string', 'string 字符串工具'],
           ['./object', 'object 对象工具'],
-          ['./null', 'null 空值工具'],
+          ['./null', 'null 工具'],
+          ['./empty', 'empty 空值工具'],
           ['./array', 'array 数组工具'],
           ['./function', 'function 函数工具']
         ]
@@ -55,7 +56,7 @@ module.exports = {
         title: '数据深度合并工具',
         path: './merge',
         children: [
-          ['/merge', 'merge 合并工具']
+          ['./merge', 'merge 合并工具']
         ]
       },
       {

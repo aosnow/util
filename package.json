@@ -1,6 +1,6 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",
@@ -47,7 +47,8 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "currency.js": "^2.0.3",
-    "dayjs": "^1.10.4"
+    "dayjs": "^1.10.4",
+    "hash.js": "^1.1.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

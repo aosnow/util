@@ -7,7 +7,7 @@
 import dayjs from 'dayjs';
 import { isNumber } from './number';
 import { isArray } from './array';
-import { isObjectLike, getTag } from './object';
+import { isObject, getTag } from './object';
 
 /**
  * 检查 value 是否是 Date 对象。
@@ -16,7 +16,7 @@ import { isObjectLike, getTag } from './object';
  * @returns {boolean} 如果 value 是一个日期对象，那么返回 true，否则返回 false。
  */
 export function isDate(value) {
-  return isObjectLike(value) && getTag(value) === '[object Date]';
+  return isObject(value) && getTag(value) === '[object Date]';
 }
 
 /**

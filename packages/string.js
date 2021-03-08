@@ -4,6 +4,9 @@
 // created: 2019/6/26 21:04
 // ------------------------------------------------------------------------------
 
+import sha1 from 'hash.js/lib/hash/sha/1';
+import { isBoolean } from './boolean';
+
 const CASE_WORD = /([a-zA-Z][a-z0-9]*)/g;
 
 /**
@@ -130,4 +133,29 @@ export function kebabCase(value) {
 export function snakeCase(value) {
   const matches = value.match(CASE_WORD);
   return matches.map((item) => item.toLowerCase()).join('_');
+}
+
+/**
+ * 生成 sha1 乱码串
+ * @param {String|Number|Boolean} [input='']
+ * @param {Boolean} [random=true] 默认生成随机串（每次结果不同）
+ * @return {String} sha格式乱码串
+ *
+ * @example
+ *
+ * hash();
+ * => 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
+ *
+ * hash(false);
+ * => 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
+ */
+export function hash(input = '', random = true) {
+  if (isBoolean(input)) {
+    random = input;
+    input = undefined;
+  }
+
+  input = input || '';
+  input = `${input}${random ? Math.random() : ''}`;
+  return sha1().update(input).digest('hex');
 }

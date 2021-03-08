@@ -4,6 +4,7 @@
 // created: 2021/2/22 17:59
 // ------------------------------------------------------------------------------
 
+import assignValue from './lib/assignValue';
 import { isFunction } from './function';
 import { isPlainObject } from './object';
 import { isArray } from './array';
@@ -47,7 +48,7 @@ export function merge(target, ...source) {
     newData = Object.create(null);
 
     source.forEach(item => {
-      _merge(newData, item, _assignValue);
+      _merge(newData, item, assignValue);
     });
   }
 
@@ -62,24 +63,10 @@ export function merge(target, ...source) {
   return target;
 }
 
-export function _assignValue(objValue, srcValue, key, object, source) {
-  if (key === '__proto__' && Object.defineProperty) {
-    Object.defineProperty(object, key, {
-      configurable: true,
-      enumerable: true,
-      value: srcValue,
-      writable: true
-    });
-  }
-  else {
-    object[key] = srcValue;
-  }
-}
-
 function _merge(target, source, customizer) {
   const assignMethod = function(objValue, srcValue, key, object, source) {
     if (srcValue !== object[key]) {
-      (customizer || _assignValue)(objValue, srcValue, key, object, source);
+      (customizer || assignValue)(objValue, srcValue, key, object, source);
     }
   };
 

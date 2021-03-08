@@ -19,6 +19,9 @@
 <dt><a href="#snakeCase">snakeCase([value])</a> ⇒ <code>string</code></dt>
 <dd><p>转换 value 为 <a href="https://en.wikipedia.org/wiki/Snake_case">下划线</a>写法</p>
 </dd>
+<dt><a href="#hash">hash([input], [random])</a> ⇒ <code>String</code></dt>
+<dd><p>生成 sha1 乱码串</p>
+</dd>
 </dl>
 
 <a name="repeat"></a>
@@ -148,4 +151,25 @@ snakeCase('fooBar');
 
 snakeCase('--FOO-BAR--');
 // => 'foo_bar'
+```
+<a name="hash"></a>
+
+## hash([input], [random]) ⇒ <code>String</code>
+生成 sha1 乱码串
+
+**Kind**: global function  
+**Returns**: <code>String</code> - sha格式乱码串  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [input] | <code>String</code> \| <code>Number</code> \| <code>Boolean</code> | <code>&#x27;&#x27;</code> |  |
+| [random] | <code>Boolean</code> | <code>true</code> | 默认生成随机串（每次结果不同） |
+
+**Example**  
+```js
+hash();
+=> 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
+
+hash(false);
+=> 'ee7f2e9a51ec9497e3a7421dbdfb85a6a641205b'
 ```

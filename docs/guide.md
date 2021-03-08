@@ -36,7 +36,7 @@ isArray([1, 2, 3]);
 ### 日期时间工具
 - [datetime 日期时间工具](./datetime)
 ### 数据深度合并工具
-- [merge 合并工具](/merge)
+- [merge 合并工具](./merge)
 ### 货币工具
 - [currency 货币工具](./currency)
 ### 地图工具

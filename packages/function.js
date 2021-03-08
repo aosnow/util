@@ -4,7 +4,8 @@
 // created: 2021/1/28 21:35
 // ------------------------------------------------------------------------------
 
-import { getTag, isObject } from './object';
+import { isEmpty } from './empty';
+import { getTag } from './object';
 
 const asyncTag = '[object AsyncFunction]';
 const funcTag = '[object Function]';
@@ -25,9 +26,6 @@ const proxyTag = '[object Proxy]';
  * // => false
  */
 export function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 9 which returns 'object' for typed arrays and other constructors.
   const tag = getTag(value);
