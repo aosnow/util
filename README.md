@@ -42,6 +42,9 @@ isArray([1, 2, 3]);
 - empty 空值工具
 - array 数组工具
 - function 函数工具
+- file 文件内容工具
+- buffer 工具
+- form 表单内容工具
 ### 日期时间工具
 - datetime 日期时间工具
 ### 数据深度合并工具
