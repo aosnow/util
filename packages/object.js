@@ -72,8 +72,10 @@ export function isObject(value) {
  * // => true
  */
 export function isPlainObject(value) {
-  if (!isObject(value)) return false;
-  return getTag(value) === tag;
+  if (!isObject(value) || getTag(value) !== tag) return false;
+
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === null || prototype === Object.prototype;
 }
 
 /**

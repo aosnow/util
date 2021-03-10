@@ -1,6 +1,6 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",

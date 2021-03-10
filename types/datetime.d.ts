@@ -58,7 +58,7 @@ export declare function genDate({ year, month, day, hour, minute, second }): Dat
  * betweenDate('08:08:59~23:08:59');
  * // => true // now at '10:08:59'
  */
-export declare function betweenDate(businessTime: string, now: number): boolean;
+export declare function betweenDate(businessTime: string | string[], now?: number): boolean;
 
 /**
  * 格式化日期信息为指定格式
@@ -76,7 +76,7 @@ export declare function betweenDate(businessTime: string, now: number): boolean;
  * dateformat(1611961835705, 'YYYY-MM-DD HH:mm:ss');
  * // => 2021-01-30 07:10:35
  */
-export declare function dateformat(dateInfo: string | number | Date, format: string): string;
+export declare function dateformat(dateInfo?: string | number | Date, format?: string): string;
 
 /**
  * 将毫秒转化为相应的时间字符串
@@ -92,6 +92,6 @@ export declare function dateformat(dateInfo: string | number | Date, format: str
  * times(9000760, false);
  * // => '3小时'
  */
-export declare function times(ms: number, all: boolean, unit: { day: string, hour: string, minute: string, second: string }): string;
+export declare function times(ms: number, all?: boolean, unit?: { day: string, hour: string, minute: string, second: string }): string;
 
 export { dayjs };

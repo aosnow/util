@@ -5,6 +5,35 @@
 // ------------------------------------------------------------------------------
 
 /**
+ * 检测 `value` 是否为 URL 对象类型
+ *
+ * @param {*} value 待检测的值
+ * @returns {boolean} 若 `value` 为 URL 对象类型返回 `true`，否则返回 `false`
+ *
+ * @example
+ * const url = new URL('http://www.example.com/dogs');
+ * isURL(url);
+ * // => true
+ */
+export function isURL(value): boolean;
+
+/**
+ * 检测 `value` 是否为 URLSearchParams 对象类型
+ *
+ * @param {*} value 待检测的值
+ * @returns {boolean} 若 `value` 为 URLSearchParams 对象类型返回 `true`，否则返回 `false`
+ *
+ * @example
+ * const url = new URL('http://www.example.com/dogs?id=123');
+ * isURLSearchParams(url.searchParams);
+ * // => true
+ *
+ * console.log(url.searchParams.get("id"));
+ * // => '123'
+ */
+export function isURLSearchParams(value): boolean;
+
+/**
  * 检测 value 是否为 Base64 格式的 DataURL （即 base64 图片）
  * @param {*} value 要检查的值。
  * @return {boolean}

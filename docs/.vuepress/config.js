@@ -42,7 +42,10 @@ module.exports = {
           ['./null', 'null 工具'],
           ['./empty', 'empty 空值工具'],
           ['./array', 'array 数组工具'],
-          ['./function', 'function 函数工具']
+          ['./function', 'function 函数工具'],
+          ['./file', 'file 文件内容工具'],
+          ['./buffer', 'buffer 工具'],
+          ['./form', 'form 表单内容工具']
         ]
       },
       {

@@ -35,26 +35,6 @@ export declare function getTag(value): boolean;
 export declare function isObject(value): boolean;
 
 /**
- * 检查 value 是否为类似 Object 类型（如 {}、arrays等，但不包含 null、undefined、function）
- * @param {*} value 待检查的值
- * @returns {boolean} 如果 value 是一个类似 Object 对象类型，那么返回 true，否则返回 false。
- * @example
- *
- * isObjectLike({});
- * // => true
- *
- * isObjectLike([1, 2, 3]);
- * // => true
- *
- * isObjectLike(noop);
- * // => false
- *
- * isObjectLike(null);
- * // => false
- */
-export declare function isObjectLike(value): boolean;
-
-/**
  * 检查 value 是否是普通对象。 也就是说该对象由 Object 构造函数创建，或者 prototype 为 null 。
  * @param {*} value 待检查的值
  * @return {boolean} 如果 value 是一个普通对象，那么返回 true，否则返回 false。

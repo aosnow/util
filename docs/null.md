@@ -23,7 +23,11 @@
 
 **Example**  
 ```js
-isNull(null);// => trueisNull(void 0);// => false
+isNull(null);
+// => true
+
+isNull(void 0);
+// => false
 ```
 <a name="isNil"></a>
 
@@ -39,5 +43,12 @@ isNull(null);// => trueisNull(void 0);// => false
 
 **Example**  
 ```js
-isNil(null);// => trueisNil(void 0);// => trueisNil(NaN);// => false
+isNil(null);
+// => true
+
+isNil(void 0);
+// => true
+
+isNil(NaN);
+// => false
 ```

@@ -11,6 +11,9 @@ export * from './null';
 export * from './object';
 export * from './array';
 export * from './function';
+export * from './file';
+export * from './buffer';
+export * from './form';
 
 export * from './empty';
 export * from './merge';
