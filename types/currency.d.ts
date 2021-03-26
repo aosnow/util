@@ -23,6 +23,6 @@ import Currence from 'currency.js';
  * currency(15.6, false, '￥');
  * // => ￥15.60
  */
-export declare function currency(value, removeTrailingZeros: boolean, symbol: string): string;
+export declare function currency(value, removeTrailingZeros?: boolean, symbol?: string): string;
 
 export { Currence as currencejs };

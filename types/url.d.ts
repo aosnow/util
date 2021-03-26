@@ -59,6 +59,46 @@ export declare function isDataURL(value): boolean;
 export declare function isAbsoluteURL(value): boolean;
 
 /**
+ * 检测 value 是否是 ip 地址开始的 URL（如以 ip 开头的网址）
+ * @param {*} value 要检查的值。
+ * @return {boolean}
+ *
+ * @example
+ * isIpURL('http://127.0.0.1/path');
+ * // => true
+ *
+ * isIpURL('ftp://200.0.0.1/path');
+ * // => true
+ *
+ * isIpURL('//172.16.8.6/path');
+ * // => true
+ *
+ * isIpURL('http://www.xxx.com');
+ * // => false
+ */
+export function isIpURL(value): boolean;
+
+/**
+ * 检测 value 是否是 相对地址（如以 './','../','/','目录名' 开头的网址）
+ * @param {*} value 要检查的值。
+ * @return {boolean}
+ *
+ * @example
+ * isRelativeURL('a/b/c/i.html');
+ * // => true
+ *
+ * isRelativeURL('a/b/c/q?k=123');
+ * // => true
+ *
+ * isRelativeURL('../a/b/c');
+ * // => true
+ *
+ * isRelativeURL('//a.com/b/c');
+ * // => false
+ */
+export function isRelativeURL(value): boolean;
+
+/**
  * 合并多个URL部分为完整的 URL 地址
  * @param {String} rootURL 如 'http://img.xxx.com'
  * @param {String} otherURL 如 '2021-01-30','upload/xxx.jpg'

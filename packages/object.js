@@ -8,6 +8,7 @@ import isIndex from './lib/isIndex';
 import stringToPath from './lib/stringToPath';
 import assignValue from './lib/assignValue';
 import { isArray } from './array';
+import { merge } from './merge';
 
 const toString = Object.prototype.toString;
 const tag = '[object Object]';
@@ -193,4 +194,22 @@ function _baseSet(object, path, value, customizer) {
   }
 
   return object;
+}
+
+/**
+ * 深度克隆指定对象，返回克隆后的副本
+ * @param {Object} value 待检查的值
+ * @return {Object} 与源对象 value 无关的副本对象
+ *
+ * @example
+ * var object = { 'a': 1 };
+ *
+ * var obj2 = clone(object);
+ * obj2.a = 2;
+ *
+ * console.log(object.a, obj2.a);
+ * // => 1  2
+ */
+export function clone(value) {
+  return isPlainObject(value) ? merge({}, value) : value;
 }

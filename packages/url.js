@@ -58,6 +58,9 @@ export function isDataURL(value) {
  * isAbsoluteURL('ftp://200.0.0.1/xxx');
  * // => true
  *
+ * isAbsoluteURL('//xxx.com/path');
+ * // => true
+ *
  * isAbsoluteURL('/upload/xxx.jpg');
  * // => false
  *
@@ -65,6 +68,50 @@ export function isDataURL(value) {
 export function isAbsoluteURL(value) {
   // A URL is considered absolute if it begins with "<scheme>://" or "//"
   return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(value);
+}
+
+/**
+ * 检测 value 是否是 ip 地址开始的 URL（如以 ip 开头的网址）
+ * @param {*} value 要检查的值。
+ * @return {boolean}
+ *
+ * @example
+ * isIpURL('http://127.0.0.1/path');
+ * // => true
+ *
+ * isIpURL('ftp://200.0.0.1/path');
+ * // => true
+ *
+ * isIpURL('//172.16.8.6/path');
+ * // => true
+ *
+ * isIpURL('http://www.xxx.com');
+ * // => false
+ */
+export function isIpURL(value) {
+  return isAbsoluteURL(value) && /(\d{1,3}\.){3}\d{1,3}/.test(value);
+}
+
+/**
+ * 检测 value 是否是 相对地址（如以 './','../','/','目录名' 开头的网址）
+ * @param {*} value 要检查的值。
+ * @return {boolean}
+ *
+ * @example
+ * isRelativeURL('a/b/c/i.html');
+ * // => true
+ *
+ * isRelativeURL('a/b/c/q?k=123');
+ * // => true
+ *
+ * isRelativeURL('../a/b/c');
+ * // => true
+ *
+ * isRelativeURL('//a.com/b/c');
+ * // => false
+ */
+export function isRelativeURL(value) {
+  return /^[\/\\]?([0-9a-z-_.]+[\/\\])+/i.test(value);
 }
 
 /**

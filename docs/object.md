@@ -22,6 +22,9 @@
 缺少的索引属性会创建为数组，而缺少的属性会创建为对象。</p>
 <p><strong>注意:</strong> 这个方法会改变 <code>object</code>。</p>
 </dd>
+<dt><a href="#clone">clone(value)</a> ⇒ <code>Object</code></dt>
+<dd><p>深度克隆指定对象，返回克隆后的副本</p>
+</dd>
 </dl>
 
 <a name="getTag"></a>
@@ -156,4 +159,26 @@ console.log(object.a[0].b.c);
 set(object, ['x', '0', 'y', 'z'], 5);
 console.log(object.x[0].y.z);
 // => 5
+```
+<a name="clone"></a>
+
+## clone(value) ⇒ <code>Object</code>
+深度克隆指定对象，返回克隆后的副本
+
+**Kind**: global function  
+**Returns**: <code>Object</code> - 与源对象 value 无关的副本对象  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>Object</code> | 待检查的值 |
+
+**Example**  
+```js
+var object = { 'a': 1 };
+
+var obj2 = clone(object);
+obj2.a = 2;
+
+console.log(object.a, obj2.a);
+// => 1  2
 ```

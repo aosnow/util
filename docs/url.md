@@ -13,6 +13,12 @@
 <dt><a href="#isAbsoluteURL">isAbsoluteURL(value)</a> ⇒ <code>boolean</code></dt>
 <dd><p>检测 value 是否是 绝对地址（如以 http 开头的网址）</p>
 </dd>
+<dt><a href="#isIpURL">isIpURL(value)</a> ⇒ <code>boolean</code></dt>
+<dd><p>检测 value 是否是 ip 地址开始的 URL（如以 ip 开头的网址）</p>
+</dd>
+<dt><a href="#isRelativeURL">isRelativeURL(value)</a> ⇒ <code>boolean</code></dt>
+<dd><p>检测 value 是否是 相对地址（如以 &#39;./&#39;,&#39;../&#39;,&#39;/&#39;,&#39;目录名&#39; 开头的网址）</p>
+</dd>
 <dt><a href="#mergeURL">mergeURL(rootURL, otherURL)</a> ⇒ <code>String</code></dt>
 <dd><p>合并多个URL部分为完整的 URL 地址</p>
 </dd>
@@ -87,7 +93,60 @@ isAbsoluteURL('http://www.xxx.com');
 isAbsoluteURL('ftp://200.0.0.1/xxx');
 // => true
 
+isAbsoluteURL('//xxx.com/path');
+// => true
+
 isAbsoluteURL('/upload/xxx.jpg');
+// => false
+```
+<a name="isIpURL"></a>
+
+## isIpURL(value) ⇒ <code>boolean</code>
+检测 value 是否是 ip 地址开始的 URL（如以 ip 开头的网址）
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | 要检查的值。 |
+
+**Example**  
+```js
+isIpURL('http://127.0.0.1/path');
+// => true
+
+isIpURL('ftp://200.0.0.1/path');
+// => true
+
+isIpURL('//172.16.8.6/path');
+// => true
+
+isIpURL('http://www.xxx.com');
+// => false
+```
+<a name="isRelativeURL"></a>
+
+## isRelativeURL(value) ⇒ <code>boolean</code>
+检测 value 是否是 相对地址（如以 './','../','/','目录名' 开头的网址）
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>\*</code> | 要检查的值。 |
+
+**Example**  
+```js
+isRelativeURL('a/b/c/i.html');
+// => true
+
+isRelativeURL('a/b/c/q?k=123');
+// => true
+
+isRelativeURL('../a/b/c');
+// => true
+
+isRelativeURL('//a.com/b/c');
 // => false
 ```
 <a name="mergeURL"></a>

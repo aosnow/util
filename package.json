@@ -1,6 +1,6 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",
@@ -46,7 +46,7 @@
   },
   "peerDependencies": {
     "core-js": ">=3.6.5",
-    "currency.js": "^2.0.0",
+    "currency.js": ">=2.0.0",
     "dayjs": ">=1.10.4",
     "hash.js": ">=1.1.7"
   },
