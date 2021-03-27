@@ -4,7 +4,9 @@
 // created: 2021/2/22 17:59
 // ------------------------------------------------------------------------------
 
+import getAllKeys from './lib/getAllKeys';
 import assignValue from './lib/assignValue';
+import baseClone from './lib/baseClone';
 import { isFunction } from './function';
 import { isPlainObject } from './object';
 import { isArray } from './array';
@@ -50,15 +52,13 @@ export function merge(target, ...source) {
     newData = Object.create(null);
 
     source.forEach(item => {
-      console.warn('newData:', JSON.stringify(newData));
-      console.warn('item:', JSON.stringify(item));
-      _merge(newData, item, assignValue);
+      _merge(newData, baseClone(item), assignValue);
     });
   }
 
   // 若只有一个数据源，只直接视其为最终值
   else {
-    newData = source[0];
+    newData = baseClone(source[0]);
   }
 
   // 使用最终值，进行最后的合并
@@ -75,7 +75,9 @@ function _merge(target, source, customizer) {
   };
 
   if (isPlainObject(source) || isArray(source)) {
-    Object.keys(source).forEach(key => {
+    const keys = getAllKeys(source);
+
+    keys.forEach(key => {
 
       const src = source[key];
       // const dest = target[key];

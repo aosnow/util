@@ -11,12 +11,12 @@
     <div class="merge-testor__c">
       <div class="l">
         <h2>copy:</h2>
-        <pre>{{copy}}</pre>
+        <pre>{{ copy }}</pre>
       </div>
 
       <div class="r">
         <h2>config:</h2>
-        <pre>{{config}}</pre>
+        <pre>{{ config }}</pre>
       </div>
     </div>
 
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import ServiceError from '@/error/ServiceError';
 import { clone, merge } from '@mudas/util';
 import Config from './test-data';
 
@@ -48,9 +49,16 @@ export default {
 
   methods: {
     clickHandler() {
-      const c = clone(this.config);
-      console.warn(JSON.stringify(c));
-      this.copy = merge({}, c, this.newData);
+      // const s = Symbol('a');
+      // const o = { [s]: 'a1' };
+      // const c = clone(o);
+
+      // const c = clone(this.config);
+      // console.warn(c);
+
+      const t = Date.now();
+      this.copy = merge({}, this.config, this.newData);
+      console.warn(Date.now() - t);
     }
   }
 };

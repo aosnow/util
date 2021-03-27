@@ -4,46 +4,19 @@
 // created: 2021/3/26 23:49
 // ------------------------------------------------------------------------------
 
-import { isArray } from '../array';
-import { isPlainObject } from '../object';
+const invalidObjectFields = [
+  '__ob__', // vue Observer
+  '__proto__' // Object prototype
+];
 
-function _arrayKey(key) {
-  return `['${key}']`;
-}
+function getAllKeys(value) {
+  // Reflect.ownKeys 方法返回一个由目标对象自身的属性键组成的数组。
+  // 它的返回值等同于Object.getOwnPropertyNames(target).concat(Object.getOwnPropertySymbols(target))。
+  // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys
+  let keys = Reflect.ownKeys(value);
 
-function _objectKey(key) {
-  return `.${key}`;
-}
-
-function getAllKeys(value, parentKey = '') {
-  const holder = [];
-  const keys = Object.keys(value);
-
-  // 本级 keys
-  holder.push(...keys);
-  // holder.push(...(keys.slice().map(item => {
-  //   if (!parentKey) return item;
-  //
-  //   const keyType = isArray(value[item]) ? _arrayKey : _objectKey;
-  //   return `${parentKey}${keyType(item)}`;
-  // })));
-
-  // 尝试测试下级类型
-  keys.forEach(key => {
-    let keyPath = [key];
-    if (parentKey) keyPath.unshift(parentKey);
-    keyPath = keyPath.join('.');
-    console.warn(keyPath);
-
-    if (isArray(value[key])) {
-      holder.push(...getAllKeys(value[key], `${keyPath}`));
-    }
-    else if (isPlainObject(value[key])) {
-      holder.push(...getAllKeys(value[key], `${keyPath}`));
-    }
-  });
-
-  return holder;
+  // keys 过滤掉 __ob__、__proto__ 等特殊属性
+  return keys.filter(key => invalidObjectFields.indexOf(key) === -1);
 }
 
 export default getAllKeys;

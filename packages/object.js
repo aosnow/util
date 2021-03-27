@@ -48,7 +48,7 @@ export function getTag(value) {
  * // => false
  */
 export function isObject(value) {
-  return value !== null && value !== undefined && typeof value === 'object';
+  return value !== null && typeof value === 'object';
 }
 
 /**
@@ -199,7 +199,12 @@ function _baseSet(object, path, value, customizer) {
 
 /**
  * 深度克隆指定对象，返回克隆后的副本
- * @param {Object} value 待检查的值
+ *
+ * **注意**：该方法仅支持 <code>Array,Date,RegExp,Set,Map,URL,URLSearchParams,ArrayBuffer,
+ * DataView,Int8Array,Int16Array,Int32Array,Uint8Array,Uint8ClampedArray,
+ * Uint16Array,Uint32Array,Float32Array,Float64Array,Object</code> 对象的克隆。
+ *
+ * @param {Object} value 待克隆的对象
  * @return {Object} 与源对象 value 无关的副本对象
  *
  * @example
@@ -213,9 +218,6 @@ function _baseSet(object, path, value, customizer) {
  */
 export function clone(value) {
   if (isPlainObject(value)) {
-    const allKeys = getAllKeys(value);
-    console.warn(allKeys);
-
     return baseClone(value);
   }
 
