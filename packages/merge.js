@@ -19,6 +19,8 @@ import { isArray } from './array';
  * <li>source 对象字段值类型若与 target 对象字段值类型 不一致，由 source 覆盖前者，target 源数据将丢失</li>
  * </ul>
  *
+ * **注意:** 这个方法仅做深度合并，合并的是值的引用（直接赋值，而非拷贝），不会起到克隆的作用。因此参与合并的对象引用值皆可能在覆盖时被影响。
+ *
  * @param {Object} target 目标对象
  * @param {...Object} [source] 来源对象
  * @param {Function} customizer 自定义赋值逻辑的方法，每次比较将传入参数 (objValue, srcValue, key, object, source)
@@ -48,6 +50,8 @@ export function merge(target, ...source) {
     newData = Object.create(null);
 
     source.forEach(item => {
+      console.warn('newData:', JSON.stringify(newData));
+      console.warn('item:', JSON.stringify(item));
       _merge(newData, item, assignValue);
     });
   }

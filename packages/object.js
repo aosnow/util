@@ -7,8 +7,9 @@
 import isIndex from './lib/isIndex';
 import stringToPath from './lib/stringToPath';
 import assignValue from './lib/assignValue';
+import getAllKeys from './lib/getAllKeys';
+import baseClone from './lib/baseClone';
 import { isArray } from './array';
-import { merge } from './merge';
 
 const toString = Object.prototype.toString;
 const tag = '[object Object]';
@@ -211,5 +212,12 @@ function _baseSet(object, path, value, customizer) {
  * // => 1  2
  */
 export function clone(value) {
-  return isPlainObject(value) ? merge({}, value) : value;
+  if (isPlainObject(value)) {
+    const allKeys = getAllKeys(value);
+    console.warn(allKeys);
+
+    return baseClone(value);
+  }
+
+  return value;
 }

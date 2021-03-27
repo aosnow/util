@@ -14,15 +14,17 @@
     </el-form>
 
     <pre>{{object}}</pre>
-
     <el-button @click="clickHandler">merge 值</el-button>
     <el-button @click="handler">执行相关操作</el-button>
+
+    <merge-testor/>
 
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
+import MergeTestor from '@/MergeTestor';
 
 import {
   repeat,
@@ -53,6 +55,7 @@ import {
 export default {
   name: 'app',
   mixins: [],
+  components: { MergeTestor },
 
   data() {
     return {
@@ -139,12 +142,12 @@ export default {
     // console.warn(snakeCase('Foo Bar'));
     // console.warn(snakeCase('fooBar'));
     // console.warn(snakeCase('--foo-bar--'));
-    this.testGet();
-    this.testSet();
-
-    const object = {};
-    set(object, ['x', '0', 'y', 'z'], 5);
-    console.log(object);
+    // this.testGet();
+    // this.testSet();
+    //
+    // const object = {};
+    // set(object, ['x', '0', 'y', 'z'], 5);
+    // console.log(object);
   },
 
   methods: {
