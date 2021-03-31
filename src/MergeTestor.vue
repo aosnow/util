@@ -11,12 +11,12 @@
     <div class="merge-testor__c">
       <div class="l">
         <h2>copy:</h2>
-        <pre>{{ copy }}</pre>
+        <pre>{{copy}}</pre>
       </div>
 
       <div class="r">
         <h2>config:</h2>
-        <pre>{{ config }}</pre>
+        <pre>{{config}}</pre>
       </div>
     </div>
 
@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import ServiceError from '@/error/ServiceError';
-import { clone, merge } from '@mudas/util';
+import { merge } from 'lodash-es';
+import initCloneObject from 'lodash-es/_initCloneObject';
 import Config from './test-data';
 
 export default {
@@ -44,7 +44,12 @@ export default {
   },
 
   created() {
-
+    const a = { a: 1, x: { y: 1 } };
+    debugger;
+    const b = initCloneObject(a);
+    b.a = 2;
+    // b.x.y = 2;
+    console.warn(a, b);
   },
 
   methods: {
@@ -58,7 +63,10 @@ export default {
 
       const t = Date.now();
       this.copy = merge({}, this.config, this.newData);
-      console.warn(Date.now() - t);
+      for (let i = 0; i < 1000; i++) {
+        merge({}, this.config, this.newData);
+      }
+      console.warn('time:', Date.now() - t);
     }
   }
 };

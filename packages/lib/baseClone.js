@@ -11,7 +11,7 @@ import { isNil } from '../null';
 import { isObject, getTag } from '../object';
 
 /** `Object#toString` result references. */
-const urlTag = '[object URL]',
+export const urlTag = '[object URL]',
   searchParamsTag = '[object URLSearchParams]',
   dateTag = '[object Date]',
   mapTag = '[object Map]',
@@ -21,7 +21,7 @@ const urlTag = '[object URL]',
   objectTag = '[object Object]';
 
 /** typedArray references. */
-const dataViewTag = '[object DataView]',
+export const dataViewTag = '[object DataView]',
   float32Tag = '[object Float32Array]',
   float64Tag = '[object Float64Array]',
   int8Tag = '[object Int8Array]',
@@ -39,7 +39,7 @@ const dataViewTag = '[object DataView]',
  * @param {Object} dataView The data view to clone.
  * @returns {Object} Returns the cloned data view.
  */
-function cloneDataView(dataView) {
+export function cloneDataView(dataView) {
   return new dataView.constructor(dataView.buffer, dataView.byteOffset, dataView.byteLength);
 }
 
@@ -50,7 +50,7 @@ function cloneDataView(dataView) {
  * @param {Object} typedArray The typed array to clone.
  * @returns {Object} Returns the cloned typed array.
  */
-function cloneTypedArray(typedArray) {
+export function cloneTypedArray(typedArray) {
   return new typedArray.constructor(typedArray.buffer, typedArray.byteOffset, typedArray.length);
 }
 

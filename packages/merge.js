@@ -10,6 +10,7 @@ import baseClone from './lib/baseClone';
 import { isFunction } from './function';
 import { isPlainObject } from './object';
 import { isArray } from './array';
+import { isEmpty } from './empty';
 
 /**
  * 递归合并 source 来源对象自身和继承的可枚举属性到 object 目标对象
@@ -52,13 +53,13 @@ export function merge(target, ...source) {
     newData = Object.create(null);
 
     source.forEach(item => {
-      _merge(newData, baseClone(item), assignValue);
+      _merge(newData, (item), assignValue);
     });
   }
 
   // 若只有一个数据源，只直接视其为最终值
   else {
-    newData = baseClone(source[0]);
+    newData = (source[0]);
   }
 
   // 使用最终值，进行最后的合并

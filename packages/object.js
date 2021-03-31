@@ -7,8 +7,8 @@
 import isIndex from './lib/isIndex';
 import stringToPath from './lib/stringToPath';
 import assignValue from './lib/assignValue';
-import getAllKeys from './lib/getAllKeys';
 import baseClone from './lib/baseClone';
+
 import { isArray } from './array';
 
 const toString = Object.prototype.toString;
@@ -186,11 +186,9 @@ function _baseSet(object, path, value, customizer) {
     const objValue = nested[key];
     if (index !== lastIndex) {
       newValue = customizer ? customizer(objValue, key, nested) : undefined;
-      if (newValue === undefined) {
-        newValue = isObject(objValue) ? objValue : (isIndex(path[index + 1]) ? [] : {});
-      }
+      if (newValue === undefined) newValue = isObject(objValue) ? objValue : (isIndex(path[index + 1]) ? [] : {});
     }
-    assignValue(objValue, newValue, key, nested, null);
+    assignValue(nested, key, newValue);
     nested = nested[key];
   }
 

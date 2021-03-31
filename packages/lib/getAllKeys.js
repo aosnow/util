@@ -6,7 +6,8 @@
 
 const invalidObjectFields = [
   '__ob__', // vue Observer
-  '__proto__' // Object prototype
+  '__proto__', // Object prototype
+  'constructor' // Object constructor
 ];
 
 function getAllKeys(value) {

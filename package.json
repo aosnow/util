@@ -68,6 +68,7 @@
     "gh-pages": "^3.1.0",
     "hash.js": "^1.1.7",
     "jsdoc-to-markdown": "^6.0.1",
+    "lodash-es": "^4.17.21",
     "rollup": "^2.6.1",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-vue": "^5.1.6",
