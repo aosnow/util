@@ -4,12 +4,8 @@
 // created: 2021/1/28 16:31
 // ------------------------------------------------------------------------------
 
-import isIndex from './lib/isIndex';
-import stringToPath from './lib/stringToPath';
-import assignValue from './lib/assignValue';
 import baseClone from './lib/baseClone';
-
-import { isArray } from './array';
+import { baseGet, baseSet } from './lib/baseSet';
 
 const toString = Object.prototype.toString;
 const tag = '[object Object]';
@@ -88,7 +84,7 @@ export function isPlainObject(value) {
  *
  * @param {Object} object 要检索的对象。
  * @param {String[]|String} path 要获取属性的路径。
- * @param {*} [defaultValue] 如果解析 `path` 的值是 `undefined` ，则返回该指定的默认值。
+ * @param {*} [defaultValue=null] 如果解析 `path` 的值是 `undefined` ，则返回该指定的默认值。
  * @returns {*} 返回解析 `path` 的值。
  * @example
  *
@@ -103,38 +99,9 @@ export function isPlainObject(value) {
  * get(object, 'a.b.c', 'default');
  * // => 'default'
  */
-export function get(object, path, defaultValue) {
-  const result = !isObject(object) ? undefined : _baseGet(object, path);
+export function get(object, path, defaultValue = null) {
+  const result = !isObject(object) ? undefined : baseGet(object, path);
   return result === undefined ? defaultValue : result;
-}
-
-/**
- * 将 path 解析为 path array 返回
- *
- * 支持路径如：
- * - `'a[0].b.c'`
- * - `['a', '0', 'b', 'c']`
- * - `'a.b.c'`
- * @param {String[]|String} path 待解析路径
- * @return {String[]}
- * @private
- */
-function _resolvePath(path) {
-  if (isArray(path)) return path;
-  return stringToPath(path);
-}
-
-function _baseGet(object, path) {
-  path = _resolvePath(path);
-
-  let index = 0;
-  const length = path.length;
-
-  while (object != null && index < length) {
-    object = object[path[index++]];
-  }
-
-  return (index && index === length) ? object : undefined;
 }
 
 /**
@@ -146,7 +113,8 @@ function _baseGet(object, path) {
  * @param {Object} object 要修改的对象。
  * @param {Array|string} path 要设置的对象路径。
  * @param {*} value 要设置的值。
- * @param {Function} [customizer] 用来定制分配的值的自定义方法
+ * @param {Function} [customizer=null] 用来定制分配的值的自定义方法，如 `customizer(nested, key, newValue)`，当 `newValue !== nested[key]` 时代表需要设置新的属性值，
+ * 此时可以使用 Vue.set 来设置新的值以支持动态 响应特性（请注意，这与 lodash 的 set 使用策略完全不同）
  * @returns {Object} 返回被修改后的 `object`。
  * @example
  *
@@ -160,39 +128,8 @@ function _baseGet(object, path) {
  * console.log(object.x[0].y.z);
  * // => 5
  */
-export function set(object, path, value, customizer) {
-  return object == null ? object : _baseSet(object, path, value, customizer);
-}
-
-function _baseSet(object, path, value, customizer) {
-  if (!isObject(object)) {
-    return object;
-  }
-  path = _resolvePath(path);
-
-  let index = -1;
-  const length = path.length;
-  const lastIndex = length - 1;
-  let nested = object;
-
-  while (nested != null && ++index < length) {
-    const key = path[index];
-    let newValue = value;
-
-    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
-      return object;
-    }
-
-    const objValue = nested[key];
-    if (index !== lastIndex) {
-      newValue = customizer ? customizer(objValue, key, nested) : undefined;
-      if (newValue === undefined) newValue = isObject(objValue) ? objValue : (isIndex(path[index + 1]) ? [] : {});
-    }
-    assignValue(nested, key, newValue);
-    nested = nested[key];
-  }
-
-  return object;
+export function set(object, path, value, customizer = null) {
+  return object == null ? object : baseSet(object, path, value, customizer);
 }
 
 /**
@@ -215,9 +152,5 @@ function _baseSet(object, path, value, customizer) {
  * // => 1  2
  */
 export function clone(value) {
-  if (isPlainObject(value)) {
-    return baseClone(value);
-  }
-
-  return value;
+  return baseClone(value);
 }

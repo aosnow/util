@@ -4,7 +4,6 @@
 // created: 2021/1/28 21:35
 // ------------------------------------------------------------------------------
 
-import { isEmpty } from './empty';
 import { getTag } from './object';
 
 const asyncTag = '[object AsyncFunction]';

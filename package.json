@@ -1,6 +1,6 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",
@@ -53,6 +53,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
@@ -69,11 +70,17 @@
     "hash.js": "^1.1.7",
     "jsdoc-to-markdown": "^6.0.1",
     "lodash-es": "^4.17.21",
+    "node-sass": "^5.0.0",
     "rollup": "^2.6.1",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-vue": "^5.1.6",
+    "sass-loader": "^10.1.1",
     "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2"
+  },
+  "dependencies": {
+    "@mudas/reset.css": "0.0.2"
   }
 }

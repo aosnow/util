@@ -2,92 +2,81 @@
   <div id="app">
     <el-page-header title="返回" content="测试"></el-page-header>
 
-    <el-form>
-      <div>
-        <el-input v-model="value"></el-input>
-      </div>
+    <!--<el-form>-->
+    <!--  <div>-->
+    <!--    <el-input v-model="value"></el-input>-->
+    <!--  </div>-->
 
-      <div>
-        <el-input v-model="value2"></el-input>
-        <el-alert title="取值：" type="info" :description="repeatValue"></el-alert>
-      </div>
-    </el-form>
+    <!--  <div>-->
+    <!--    <el-input v-model="value2"></el-input>-->
+    <!--    <el-alert title="取值：" type="info" :description="repeatValue"></el-alert>-->
+    <!--  </div>-->
+    <!--</el-form>-->
 
-    <pre>{{object}}</pre>
-    <el-button @click="clickHandler">merge 值</el-button>
-    <el-button @click="handler">执行相关操作</el-button>
+    <!--<pre>{{object}}</pre>-->
+    <!--<el-button @click="clickHandler">merge 值</el-button>-->
+    <!--<el-button @click="handler">执行相关操作</el-button>-->
 
-    <merge-testor/>
+    <div class="app__group">
+      <el-button type="default" size="mini" round plain v-for="(conf, index) in routesConfig" :key="index" @click="topath({path:conf.path})">
+        {{conf.meta.title}}
+      </el-button>
+    </div>
+
+    <router-view/>
 
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import MergeTestor from '@/MergeTestor';
 
-import {
-  repeat,
-  trim,
-  isFunction,
-  noop,
-  isNumeric,
-  isNumber,
-  isNil,
-  isNull,
-  mergeURL,
-  dateformat,
-  times,
-  betweenDate,
-  random,
-  distance,
-  debounce,
-  currency,
-  camelCase,
-  kebabCase,
-  snakeCase,
-  merge,
-  hash,
-  get,
-  set
-} from '@mudas/util';
+import { routesConfig } from './router';
+
+// import {
+//   repeat,
+//   trim,
+//   isFunction,
+//   noop,
+//   isNumeric,
+//   isNumber,
+//   isNil,
+//   isNull,
+//   mergeURL,
+//   dateformat,
+//   times,
+//   betweenDate,
+//   random,
+//   distance,
+//   debounce,
+//   currency,
+//   camelCase,
+//   kebabCase,
+//   snakeCase,
+//   merge,
+//   hash,
+//   get,
+//   set
+// } from '@mudas/util';
 
 export default {
   name: 'app',
   mixins: [],
-  components: { MergeTestor },
 
   data() {
     return {
+      routesConfig,
+
       value: '',
       value2: '',
-
-      object: {
-        a: [{ b: 2 }, { d: 4 }, 88],
-        b: { b1: 2, b3: { b31: 31 } },
-        c: 0
-      },
-
-      other: {
-        a: [{ c: 3 }, { e: 5 }, [1, 2, { g: 88 }], 100],
-        b: { b1: 1, b2: { b21: 21 }, b3: { b32: 32 } },
-        c: 100
-      },
-
-      otherB: {
-        a: [{ a1: 8 }],
-        c: { c1: 8 }
-      },
-
       handler: null
     };
   },
 
-  computed: {
-    repeatValue() {
-      return repeat(trim(this.value2), 3);
-    }
-  },
+  // computed: {
+  //   repeatValue() {
+  //     return repeat(trim(this.value2), 3);
+  //   }
+  // },
 
   created() {
     // console.warn('-1', !(-1), !!-1);
@@ -123,10 +112,10 @@ export default {
     // console.warn('random(5)', random(-INFINITY, INFINITY));
     // console.warn('random(-5,5)', random(-5, 5));
 
-    this.handler = debounce(() => {
-      // console.warn('random(-5,5)', random(-5, 5));
-      console.warn(hash(false));
-    }, 1000, false);
+    // this.handler = debounce(() => {
+    //   // console.warn('random(-5,5)', random(-5, 5));
+    //   console.warn(hash(false));
+    // }, 1000, false);
 
     // console.warn(currency(123654.10, false));
 
@@ -151,47 +140,33 @@ export default {
   },
 
   methods: {
-    testGet() {
-      console.warn(get(this.object, 'a[0].b'));
-      console.warn(get(this.object, 'a[0].c'));
-      console.warn(get(this.object, ['a', 0, 'c']));
-      console.warn(get(this.object, 'a[2][2].g'));
-    },
-
-    testSet() {
-      set(this.object, 'a[2][2].g2', 998);
-      console.warn(get(this.object, 'a[2][2].g2'));
-    },
-
-    mergeValue(objValue, srcValue, key, object, source) {
-      // console.warn(JSON.stringify(object), key, srcValue);
-      Vue.set(object, key, srcValue);
-    },
-
-    clickHandler() {
-      const t = Date.now();
-      console.warn(t);
-      merge(this.object, this.other, this.otherB, this.mergeValue);
-      console.warn(this.object);
-      this.testGet();
-      console.warn(Date.now() - t);
+    topath(path) {
+      this.$router.replace(path);
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin: 50px;
+  margin: 20px;
 }
 
-.el-form {
-  width: 50%;
-  min-width: 200px;
-  max-width: 500px;
+.app__group {
+  margin-bottom: 20px;
+
+  .el-button {
+    //display: block;
+    margin: 2px;
+  }
+
+  .el-button + .el-button {
+    margin-left: 0;
+  }
+
 }
 </style>

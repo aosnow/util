@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 import getAllKeys from './getAllKeys';
+import { copyDataView, copyTypedArray } from './baseCopy';
 import { isArray } from '../array';
 import { isFunction } from '../function';
 import { isNil } from '../null';
@@ -31,28 +32,6 @@ export const dataViewTag = '[object DataView]',
   uint8ClampedTag = '[object Uint8ClampedArray]',
   uint16Tag = '[object Uint16Array]',
   uint32Tag = '[object Uint32Array]';
-
-/**
- * Creates a clone of `dataView`.
- *
- * @private
- * @param {Object} dataView The data view to clone.
- * @returns {Object} Returns the cloned data view.
- */
-export function cloneDataView(dataView) {
-  return new dataView.constructor(dataView.buffer, dataView.byteOffset, dataView.byteLength);
-}
-
-/**
- * Creates a clone of `typedArray`.
- *
- * @private
- * @param {Object} typedArray The typed array to clone.
- * @returns {Object} Returns the cloned typed array.
- */
-export function cloneTypedArray(typedArray) {
-  return new typedArray.constructor(typedArray.buffer, typedArray.byteOffset, typedArray.length);
-}
 
 /**
  * 深度克隆指定对象
@@ -122,7 +101,7 @@ function baseClone(value, parent, stack) {
         break;
       }
       case dataViewTag: {
-        result = cloneDataView(value);
+        result = copyDataView(value);
         break;
       }
       case float32Tag:
@@ -134,7 +113,7 @@ function baseClone(value, parent, stack) {
       case uint8ClampedTag:
       case uint16Tag:
       case uint32Tag: {
-        result = cloneTypedArray(value);
+        result = copyTypedArray(value);
         break;
       }
       case objectTag: {

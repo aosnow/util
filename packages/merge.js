@@ -4,13 +4,8 @@
 // created: 2021/2/22 17:59
 // ------------------------------------------------------------------------------
 
-import getAllKeys from './lib/getAllKeys';
-import assignValue from './lib/assignValue';
-import baseClone from './lib/baseClone';
+import baseMerge from './lib/baseMerge';
 import { isFunction } from './function';
-import { isPlainObject } from './object';
-import { isArray } from './array';
-import { isEmpty } from './empty';
 
 /**
  * 递归合并 source 来源对象自身和继承的可枚举属性到 object 目标对象
@@ -26,7 +21,7 @@ import { isEmpty } from './empty';
  *
  * @param {Object} target 目标对象
  * @param {...Object} [source] 来源对象
- * @param {Function} customizer 自定义赋值逻辑的方法，每次比较将传入参数 (objValue, srcValue, key, object, source)
+ * @param {Function} [customizer=null] 自定义赋值逻辑的方法，每次比较将传入参数 customizer(target, key, newValue)
  * @returns {Object} 返回合并后的 `object`
  * @example
  *
@@ -43,96 +38,13 @@ import { isEmpty } from './empty';
  */
 export function merge(target, ...source) {
   let customizer;
-  let newData;
 
+  // TODOD: customizer 与 Vue.set 的动态响应属性保持策略
   if (isFunction(source[source.length - 1])) customizer = source.pop();
 
-  // 当需要合并的数据来源大于 1 个时，为避免频繁或者重复在相同的属性上调用 customizer
-  // 优先使用默认合并方法，将数据源进行合并，按从右至左的方式保留最终值，以便于保障在相同的属性上只调用一次 customizer
-  if (source.length > 1) {
-    newData = Object.create(null);
-
-    source.forEach(item => {
-      _merge(newData, (item), assignValue);
-    });
-  }
-
-  // 若只有一个数据源，只直接视其为最终值
-  else {
-    newData = (source[0]);
-  }
-
-  // 使用最终值，进行最后的合并
-  _merge(target, newData, customizer);
+  source.forEach(item => {
+    baseMerge(target, item, customizer);
+  });
 
   return target;
-}
-
-function _merge(target, source, customizer) {
-  const assignMethod = function(objValue, srcValue, key, object, source) {
-    if (srcValue !== object[key]) {
-      (customizer || assignValue)(objValue, srcValue, key, object, source);
-    }
-  };
-
-  if (isPlainObject(source) || isArray(source)) {
-    const keys = getAllKeys(source);
-
-    keys.forEach(key => {
-
-      const src = source[key];
-      // const dest = target[key];
-
-      if (isPlainObject(src)) {
-        // 若 dest 为非对称类型，则直接覆盖原有值
-        if (target[key] === undefined || !isPlainObject(target[key])) {
-          assignMethod(target[key], src, key, target, source);
-        }
-        else {
-          Object.keys(src).forEach(childKey => {
-            const destChildValue = target[key][childKey];
-            if (destChildValue === undefined || (!isPlainObject(destChildValue) && !isArray(destChildValue))) {
-              assignMethod(destChildValue, src[childKey], childKey, target[key], src);
-            }
-            else {
-              _merge(destChildValue, src[childKey], assignMethod);
-            }
-          });
-        }
-      }
-      else if (isArray(src)) {
-        // 若 dest 为值类型，则舍弃原有值
-        if (!isPlainObject(target[key]) && !isArray(target[key])) {
-          assignMethod(target[key], src, key, target, source);
-        }
-        else {
-          Object.keys(src).forEach(index => {
-            const destValue = target[key][index];
-            const srcValue = src[index];
-
-            // 数组元素为复杂数据类型
-            if (isPlainObject(srcValue) || isArray(srcValue)) {
-              if (!isPlainObject(destValue) && !isArray(destValue)) {
-                assignMethod(destValue, srcValue, index, target[key], src);
-              }
-              else {
-                _merge(destValue, srcValue, assignMethod);
-              }
-            }
-            // 数组元素为简单值类型
-            else {
-              assignMethod(destValue, srcValue, index, target[key], src);
-            }
-          });
-        }
-
-      }
-      else {
-        // 值类型直接由 srcValue 覆盖 objValue
-        // isString、isNumber、isBoolean、isNull
-        assignMethod(target[key], src, key, target, source);
-      }
-
-    });
-  }
 }
