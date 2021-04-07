@@ -24,6 +24,9 @@
 </dd>
 <dt><a href="#clone">clone(value)</a> ⇒ <code>Object</code></dt>
 <dd><p>深度克隆指定对象，返回克隆后的副本</p>
+<p><strong>注意</strong>：该方法仅支持 <code>Array,Date,RegExp,Set,Map,URL,URLSearchParams,ArrayBuffer,
+DataView,Int8Array,Int16Array,Int32Array,Uint8Array,Uint8ClampedArray,
+Uint16Array,Uint32Array,Float32Array,Float64Array,Object</code> 对象的克隆。</p>
 </dd>
 </dl>
 
@@ -111,11 +114,11 @@ isPlainObject(Object.create(null));
 **Kind**: global function  
 **Returns**: <code>\*</code> - 返回解析 `path` 的值。  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| object | <code>Object</code> | 要检索的对象。 |
-| path | <code>Array.&lt;String&gt;</code> \| <code>String</code> | 要获取属性的路径。 |
-| [defaultValue] | <code>\*</code> | 如果解析 `path` 的值是 `undefined` ，则返回该指定的默认值。 |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| object | <code>Object</code> |  | 要检索的对象。 |
+| path | <code>Array.&lt;String&gt;</code> \| <code>String</code> |  | 要获取属性的路径。 |
+| [defaultValue] | <code>\*</code> | <code></code> | 如果解析 `path` 的值是 `undefined` ，则返回该指定的默认值。 |
 
 **Example**  
 ```js
@@ -141,12 +144,12 @@ get(object, 'a.b.c', 'default');
 **Kind**: global function  
 **Returns**: <code>Object</code> - 返回被修改后的 `object`。  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| object | <code>Object</code> | 要修改的对象。 |
-| path | <code>Array</code> \| <code>string</code> | 要设置的对象路径。 |
-| value | <code>\*</code> | 要设置的值。 |
-| [customizer] | <code>function</code> | 用来定制分配的值的自定义方法 |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| object | <code>Object</code> |  | 要修改的对象。 |
+| path | <code>Array</code> \| <code>string</code> |  | 要设置的对象路径。 |
+| value | <code>\*</code> |  | 要设置的值。 |
+| [customizer] | <code>function</code> | <code></code> | 用来定制分配的值的自定义方法，如 `customizer(nested, key, newValue)`，当 `newValue !== nested[key]` 时代表需要设置新的属性值， 此时可以使用 Vue.set 来设置新的值以支持动态 响应特性（请注意，这与 lodash 的 set 使用策略完全不同） |
 
 **Example**  
 ```js
@@ -165,12 +168,16 @@ console.log(object.x[0].y.z);
 ## clone(value) ⇒ <code>Object</code>
 深度克隆指定对象，返回克隆后的副本
 
+**注意**：该方法仅支持 <code>Array,Date,RegExp,Set,Map,URL,URLSearchParams,ArrayBuffer,
+DataView,Int8Array,Int16Array,Int32Array,Uint8Array,Uint8ClampedArray,
+Uint16Array,Uint32Array,Float32Array,Float64Array,Object</code> 对象的克隆。
+
 **Kind**: global function  
 **Returns**: <code>Object</code> - 与源对象 value 无关的副本对象  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| value | <code>Object</code> | 待检查的值 |
+| value | <code>Object</code> | 待克隆的对象 |
 
 **Example**  
 ```js

@@ -45,3 +45,18 @@ export declare function isArray(value): boolean;
  * // => false
  */
 export declare function isArrayLike(value): boolean;
+
+/**
+ * 检查 value 是否是TypedArray。
+ *
+ * @param {*} value 要检查的值。
+ * @returns {boolean} 如果 value 为一个typed array，那么返回 true，否则返回 false。
+ * @example
+ *
+ * isTypedArray(new Uint8Array);
+ * // => true
+ *
+ * isTypedArray([]);
+ * // => false
+ */
+export function isTypedArray(value): boolean;

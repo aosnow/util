@@ -13,7 +13,7 @@ module.exports = {
   // 参考：http://caibaojian.com/vuepress/guide/assets.html#基准-url
   base: '/util/',
 
-  title: `${pkg.name}`,
+  title: `${pkg.name}<v${pkg.version}>`,
   description: pkg.description,
 
   cache: false,

@@ -16,7 +16,7 @@
  *
  * @param {Object} target 目标对象
  * @param {...Object} [source] 来源对象
- * @param {Function} customizer 自定义赋值逻辑的方法，每次比较将传入参数 (objValue, srcValue, key, object, source)
+ * @param {Function} [customizer] 自定义赋值逻辑的方法，每次比较将传入参数 (objValue, srcValue, key, object, source)
  * @returns {Object} 返回合并后的 `object`
  * @example
  *
