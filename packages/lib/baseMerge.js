@@ -47,7 +47,6 @@ export function baseMerge(target, source, customizer, stack) {
   forEach(source, function(srcValue, key) {
     stack || (stack = new WeakMap());
     if (isObject(srcValue)) { // srcValue = srouce[key]
-      console.warn(key, JSON.stringify(target[key]), JSON.stringify(srcValue));
       baseMergeDeep(target, source, key, baseMerge, customizer, stack);
     }
     else {

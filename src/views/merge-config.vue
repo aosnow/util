@@ -47,10 +47,10 @@ export default {
     clickHandler() {
       const t = Date.now();
       // debugger;
-      this.copyValue = merge(this.sourceValue, this.newData);
-      // for (let i = 0; i < 1000; i++) {
-      //   merge({}, this.sourceValue, this.newData);
-      // }
+      this.copyValue = merge({}, this.sourceValue, this.newData);
+      for (let i = 0; i < 1000; i++) {
+        merge({}, this.sourceValue, this.newData);
+      }
       console.warn('time:', Date.now() - t);
     }
   }

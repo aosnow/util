@@ -13,7 +13,8 @@ Vue.use(Router);
 export const routesConfig = [
   { path: '/data-setget', component: () => import('@/views/data-setget'), meta: { title: 'set/get 测试' } },
   { path: '/merge-data', component: () => import('@/views/merge-data'), meta: { title: 'merge 数据测试' } },
-  { path: '/merge-config', component: () => import('@/views/merge-config'), meta: { title: 'merge Object配置 测试' } }
+  { path: '/merge-config', component: () => import('@/views/merge-config'), meta: { title: 'merge Object配置 测试' } },
+  { path: '/merge-member', component: () => import('@/views/merge-member'), meta: { title: 'merge 会员数据 测试' } }
 ];
 
 // 默认路由
