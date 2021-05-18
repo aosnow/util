@@ -38,8 +38,12 @@ isArray([1, 2, 3]);
 - [form 表单内容工具](./form)
 ### 日期时间工具
 - [datetime 日期时间工具](./datetime)
+### 数据赋值取值工具
+- [assign 赋值取值工具](./assign)
 ### 数据深度合并工具
 - [merge 合并工具](./merge)
+### 数据克隆工具
+- [clone 克隆工具](./clone)
 ### 货币工具
 - [currency 货币工具](./currency)
 ### 地图工具

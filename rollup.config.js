@@ -17,7 +17,7 @@ export default [
   // `file` and `format` for each target)
   {
     input: 'packages/index.js',
-    external: ['vue'],
+    external: ['vue', 'hash.js/lib/hash/sha/1', 'dayjs'],
     plugins: [
       delPlug({ targets: 'dist/*' }),
       vue()

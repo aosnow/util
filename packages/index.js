@@ -19,6 +19,8 @@ export * from './empty';
 export * from './merge';
 export * from './url';
 
+export * from './assign';
+export * from './clone';
 export * from './map';
 export * from './datetime';
 export * from './currency';

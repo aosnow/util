@@ -8,7 +8,7 @@ import {
   float32Tag, float64Tag,
   int16Tag, int32Tag, int8Tag,
   uint16Tag, uint32Tag, uint8ClampedTag, uint8Tag
-} from './lib/baseClone';
+} from './lib/types';
 
 import { isNil } from './null';
 import { isFunction } from './function';

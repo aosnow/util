@@ -50,6 +50,12 @@ export function isNumber(value) {
  *
  * isNumeric('3');
  * // => true
+ *
+ * isNumeric('-3');
+ * // => true
+ *
+ * isNumeric('3.2');
+ * // => true
  */
 export function isNumeric(value) {
   return isNumber(value) || /^-?\d+(\.\d+)?$/.test(value);

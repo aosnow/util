@@ -74,6 +74,12 @@ isNumeric(3);
 
 isNumeric('3');
 // => true
+
+isNumeric('-3');
+// => true
+
+isNumeric('3.2');
+// => true
 ```
 <a name="isNaN"></a>
 

@@ -10,28 +10,10 @@ import { isArray } from '../array';
 import { isFunction } from '../function';
 import { isNil } from '../null';
 import { isObject, getTag } from '../object';
-
-/** `Object#toString` result references. */
-export const urlTag = '[object URL]',
-  searchParamsTag = '[object URLSearchParams]',
-  dateTag = '[object Date]',
-  mapTag = '[object Map]',
-  regexpTag = '[object RegExp]',
-  setTag = '[object Set]',
-  arrayBufferTag = '[object ArrayBuffer]',
-  objectTag = '[object Object]';
-
-/** typedArray references. */
-export const dataViewTag = '[object DataView]',
-  float32Tag = '[object Float32Array]',
-  float64Tag = '[object Float64Array]',
-  int8Tag = '[object Int8Array]',
-  int16Tag = '[object Int16Array]',
-  int32Tag = '[object Int32Array]',
-  uint8Tag = '[object Uint8Array]',
-  uint8ClampedTag = '[object Uint8ClampedArray]',
-  uint16Tag = '[object Uint16Array]',
-  uint32Tag = '[object Uint32Array]';
+import {
+  urlTag, searchParamsTag, dateTag, mapTag, regexpTag, setTag, arrayBufferTag, objectTag,
+  dataViewTag, float32Tag, float64Tag, int8Tag, int16Tag, int32Tag, uint8Tag, uint8ClampedTag, uint16Tag, uint32Tag
+} from './types';
 
 /**
  * 深度克隆指定对象

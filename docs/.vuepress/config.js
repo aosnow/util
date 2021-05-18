@@ -23,9 +23,10 @@ module.exports = {
     sidebarDepth: 2,
     displayAllHeaders: true,
     smoothScroll: true,
+    logo: '/logo.png',
     nav: [
-      { text: '首页', link: './' },
       { text: '指南', link: './guide' },
+      { text: '示例', link: './guide#使用示例' },
       { text: 'Github', link: 'https://github.com/aosnow/util', target: '_blank' }
     ],
 
@@ -56,10 +57,24 @@ module.exports = {
         ]
       },
       {
+        title: '数据赋值取值工具',
+        path: './assign',
+        children: [
+          ['./assign', 'assign 赋值取值工具']
+        ]
+      },
+      {
         title: '数据深度合并工具',
         path: './merge',
         children: [
           ['./merge', 'merge 合并工具']
+        ]
+      },
+      {
+        title: '数据克隆工具',
+        path: './clone',
+        children: [
+          ['./clone', 'clone 克隆工具']
         ]
       },
       {

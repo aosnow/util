@@ -4,7 +4,7 @@
 // created: 2021/1/30 6:06
 // ------------------------------------------------------------------------------
 
-import Currence from 'currency.js';
+import Currency from './lib/currencyjs';
 
 /**
  * 格式化数字为货币格式
@@ -25,9 +25,7 @@ import Currence from 'currency.js';
  */
 export function currency(value, removeTrailingZeros = false, symbol = '') {
   const option = { symbol };
-  let result = Currence(value).format(option);
+  let result = Currency(value).format(option);
   if (removeTrailingZeros) result = result.replace(/\.?0{1,2}$/g, '');
   return result;
 }
-
-export { Currence as currencejs };

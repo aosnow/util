@@ -17,6 +17,9 @@
     <!--<el-button @click="clickHandler">merge 值</el-button>-->
     <!--<el-button @click="handler">执行相关操作</el-button>-->
 
+    <div class="app__group">{{234299|currency(false,'$')}}</div>
+    <div class="app__group">{{234299|currency}}</div>
+
     <div class="app__group">
       <el-button type="default" size="mini" round plain v-for="(conf, index) in routesConfig" :key="index" @click="topath({path:conf.path})">
         {{conf.meta.title}}
@@ -30,33 +33,33 @@
 
 <script>
 
-import { routesConfig } from './router';
+import {
+  //   repeat,
+  //   trim,
+  //   isFunction,
+  //   noop,
+  //   isNumeric,
+  //   isNumber,
+  //   isNil,
+  //   isNull,
+  //   mergeURL,
+  //   dateformat,
+  //   times,
+  //   betweenDate,
+  //   random,
+  //   distance,
+  //   debounce,
+  currency
+  //   camelCase,
+  //   kebabCase,
+  //   snakeCase,
+  //   merge,
+  //   hash,
+  //   get,
+  //   set
+} from '@mudas/util';
 
-// import {
-//   repeat,
-//   trim,
-//   isFunction,
-//   noop,
-//   isNumeric,
-//   isNumber,
-//   isNil,
-//   isNull,
-//   mergeURL,
-//   dateformat,
-//   times,
-//   betweenDate,
-//   random,
-//   distance,
-//   debounce,
-//   currency,
-//   camelCase,
-//   kebabCase,
-//   snakeCase,
-//   merge,
-//   hash,
-//   get,
-//   set
-// } from '@mudas/util';
+import { routesConfig } from './router';
 
 export default {
   name: 'app',
@@ -117,7 +120,7 @@ export default {
     //   console.warn(hash(false));
     // }, 1000, false);
 
-    // console.warn(currency(123654.10, false));
+    console.warn(currency(123654.10, false));
 
     // console.warn(camelCase('Foo Bar'));
     // console.warn(camelCase('fooBar'));

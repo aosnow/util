@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: '/hero.png'
+heroImage: '/logo.png'
 heroText: '@mudas/util'
 tagline: 服务于常用业务场景的公共工具库
 actionText: 快速上手指南 →
@@ -8,7 +8,7 @@ actionLink: /guide
 footer: MIT Licensed | Copyright © 2021 mudas
 features:
 - title: 简洁精悍
-  details: 仅依赖 currency.js、hash.js 和 dayjs，构建后文件大小仅几十kb。
+  details: 仅依赖 hash.js 和 dayjs，构建后文件大小仅几十kb。
 - title: 支持 ES6
   details: 构建 ES6 包 util.esm.js，支持 ES6 tree-shaking。
 - title: 支持力度

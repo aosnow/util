@@ -4,8 +4,6 @@
 // created: 2021/1/30 6:06
 // ------------------------------------------------------------------------------
 
-import Currence from 'currency.js';
-
 /**
  * 格式化数字为货币格式
  * @param {number|string} value 原始数据
@@ -24,5 +22,3 @@ import Currence from 'currency.js';
  * // => ￥15.60
  */
 export declare function currency(value, removeTrailingZeros?: boolean, symbol?: string): string;
-
-export { Currence as currencejs };

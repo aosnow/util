@@ -40,7 +40,17 @@ Used to identify `toStringTag` values of typed arrays.
 
 **Example**  
 ```js
-isArray([1, 2, 3]);// => trueisArray(document.body.children);// => falseisArray('abc');// => falseisArray(noop);// => false
+isArray([1, 2, 3]);
+// => true
+
+isArray(document.body.children);
+// => false
+
+isArray('abc');
+// => false
+
+isArray(noop);
+// => false
 ```
 <a name="isArrayLike"></a>
 
@@ -56,7 +66,17 @@ isArray([1, 2, 3]);// => trueisArray(document.body.children);// => falseis
 
 **Example**  
 ```js
-isArrayLike([1, 2, 3]);// => trueisArrayLike(document.body.children);// => trueisArrayLike('abc');// => trueisArrayLike(noop);// => false
+isArrayLike([1, 2, 3]);
+// => true
+
+isArrayLike(document.body.children);
+// => true
+
+isArrayLike('abc');
+// => true
+
+isArrayLike(noop);
+// => false
 ```
 <a name="isTypedArray"></a>
 
@@ -72,5 +92,9 @@ isArrayLike([1, 2, 3]);// => trueisArrayLike(document.body.children);// => t
 
 **Example**  
 ```js
-isTypedArray(new Uint8Array);// => trueisTypedArray([]);// => false
+isTypedArray(new Uint8Array);
+// => true
+
+isTypedArray([]);
+// => false
 ```

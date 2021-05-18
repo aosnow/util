@@ -6,6 +6,7 @@
 
 <template>
   <div class="data-setget">
+    {{100|currency}}
     <data-testor :buttons="['get 测试',' set 测试']" :copy-value="copyValue" :source-value="sourceValue" @click="clickHandler"/>
   </div>
 </template>

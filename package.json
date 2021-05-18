@@ -1,6 +1,6 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
   "author": "张雄军 <zxj@blibao.cn>",
   "license": "MIT",
@@ -46,11 +46,11 @@
   },
   "peerDependencies": {
     "core-js": ">=3.6.5",
-    "currency.js": ">=2.0.0",
     "dayjs": ">=1.10.4",
     "hash.js": ">=1.1.7"
   },
   "devDependencies": {
+    "@mudas/reset.css": "0.0.2",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
@@ -60,7 +60,6 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.9.1",
-    "currency.js": "^2.0.3",
     "dayjs": "^1.10.4",
     "element-ui": "^2.15.0",
     "eslint": "^6.7.2",
@@ -79,8 +78,5 @@
     "vue-router": "^3.5.1",
     "vue-template-compiler": "^2.6.12",
     "vuepress": "^1.8.2"
-  },
-  "dependencies": {
-    "@mudas/reset.css": "0.0.2"
   }
 }
