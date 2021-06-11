@@ -78,7 +78,7 @@ export function debounce(func, wait = 600, leading = true) {
   function debounced() {
     if (leading && !debounced.timing) invokeFunc();
     invokeTimer();
-    console.warn(timerId);
+    // console.warn(timerId);
   }
 
   return debounced;

@@ -15,6 +15,12 @@ import { isArray, isArrayLike, isTypedArray } from '../array';
 import { isFunction } from '../function';
 import { isNil } from '../null';
 
+// 数组两者合并
+export const ARRAY_MERGE = 1 << 0;
+
+// 数组后者替换前者
+export const ARRAY_REPLACE = 1 << 1;
+
 function eq(value, other) {
   return value === other || (value !== value && other !== other);
 }
@@ -39,7 +45,7 @@ export function initCloneObject(object) {
          : {};
 }
 
-export function baseMerge(target, source, customizer, stack) {
+export function baseMerge(target, source, customizer, stack, ploy) {
   if (isNil(target) || isNil(source) || target === source) {
     return target;
   }
@@ -47,7 +53,7 @@ export function baseMerge(target, source, customizer, stack) {
   forEach(source, function(srcValue, key) {
     stack || (stack = new WeakMap());
     if (isObject(srcValue)) { // srcValue = srouce[key]
-      baseMergeDeep(target, source, key, baseMerge, customizer, stack);
+      baseMergeDeep(target, source, key, baseMerge, customizer, stack, ploy);
     }
     else {
       assignMergeValue(target, key, srcValue, customizer);
@@ -67,9 +73,10 @@ export function baseMerge(target, source, customizer, stack) {
  * @param {Function} mergeFunc The function to merge values.
  * @param {Function} [customizer=null] The function to customize assigned values.
  * @param {Object} [stack=null] Tracks traversed source values and their merged
+ * @param {Number} [ploy=ARRAY_MERGE] merge ploy
  *  counterparts.
  */
-export function baseMergeDeep(target, source, key, mergeFunc, customizer = null, stack = null) {
+export function baseMergeDeep(target, source, key, mergeFunc, customizer = null, stack = null, ploy = ARRAY_MERGE) {
   const objValue = target[key];
   const srcValue = source[key];
   const stacked = stack.get(srcValue);
@@ -92,11 +99,13 @@ export function baseMergeDeep(target, source, key, mergeFunc, customizer = null,
 
     // 数组、ArrayBuffer、TypedArray 的复制
     if (isArr || isBuff || isTyped) {
-      if (isArray(objValue)) {
-        newValue = objValue;
-      }
-      else if (isArrayLike(objValue)) {
-        newValue = copyArray(objValue);
+      if (isArray(objValue) || isArrayLike(objValue)) {
+        if (hasPloy(ploy, ARRAY_MERGE)) {
+          newValue = isArray(objValue) ? objValue : copyArray(objValue); // 保留元素，并合并后续来源的元素
+        }
+        else if (hasPloy(ploy, ARRAY_REPLACE)) {
+          newValue = []; // 直接用后续来源的元素创建新数组
+        }
       }
       else if (isBuff) {
         isCommon = false;
@@ -132,7 +141,7 @@ export function baseMergeDeep(target, source, key, mergeFunc, customizer = null,
   if (isCommon) {
     // 递归合并对象和数组类型数据
     stack.set(srcValue, newValue);
-    mergeFunc(newValue, srcValue, customizer, stack);
+    mergeFunc(newValue, srcValue, customizer, stack, ploy);
     stack.delete(srcValue);
   }
 
@@ -152,6 +161,16 @@ export function forEach(target, iteratee, keysFunc) {
     }
   }
   return target;
+}
+
+/**
+ * 检测指定策略值是否包含指定的策略
+ * @param target 一般指 baseMerge.ploy
+ * @param {number} ploy 一般为不重复的 2 指数值
+ * @return {boolean}
+ */
+export function hasPloy(target, ploy) {
+  return !!(target & ploy);
 }
 
 export default baseMerge;

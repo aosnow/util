@@ -13,12 +13,5 @@
 
 **Example**  
 ```js
-currency(15.6);
-// => 15.60
-
-currency(15.6, true);
-// => 15.6
-
-currency(15.6, false, '￥');
-// => ￥15.60
+currency(15.6);// => 15.60currency(15.6, true);// => 15.6currency(15.6, false, '￥');// => ￥15.60
 ```

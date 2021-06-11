@@ -4,7 +4,8 @@
 // created: 2021/2/22 17:59
 // ------------------------------------------------------------------------------
 
-import baseMerge from './lib/baseMerge';
+import baseMerge, { ARRAY_MERGE, ARRAY_REPLACE } from './lib/baseMerge';
+import { isNumber } from './number';
 import { isFunction } from './function';
 
 /**
@@ -22,8 +23,10 @@ import { isFunction } from './function';
  * @param {Object} target 目标对象
  * @param {...Object} [source] 来源对象
  * @param {Function} [customizer=null] 自定义赋值逻辑的方法，每次比较将传入参数 customizer(target, key, newValue)
+ * @param {Number} [ploy=ARRAY_MERGE] 自定义合并策略（目前仅支持指定数组合并策略）
  * @returns {Object} 返回合并后的 `object`
  * @example
+ * import {merge, ARRAY_REPLACE} from '@mudas/util';
  *
  * var object = {
  *   'a': [{ 'b': 2 }, { 'd': 4 }]
@@ -35,16 +38,23 @@ import { isFunction } from './function';
  *
  * merge(object, other);
  * // => { 'a': [{ 'b': 2, 'c': 3 }, { 'd': 4, 'e': 5 }] }
+ *
+ * // use ploy
+ * merge(object, other, ARRAY_REPLACE);
+ * // => { 'a': [{ 'c': 3 }, { 'e': 5 }] }
  */
-export function merge(target, ...source) {
+function merge(target, ...source) {
   let customizer;
+  let ploy;
 
-  // TODOD: customizer 与 Vue.set 的动态响应属性保持策略
+  if (isNumber(source[source.length - 1])) ploy = source.pop();
   if (isFunction(source[source.length - 1])) customizer = source.pop();
 
   source.forEach(item => {
-    baseMerge(target, item, customizer);
+    baseMerge(target, item, customizer, null, ploy);
   });
 
   return target;
 }
+
+export { merge, ARRAY_MERGE, ARRAY_REPLACE };

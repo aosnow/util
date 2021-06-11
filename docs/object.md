@@ -29,9 +29,7 @@
 <a name="isObject"></a>
 
 ## isObject(value) ⇒ <code>boolean</code>
-检测 value 是否为 `Object`
-[类型](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
-(如 `arrays`, `dates`, `objects`, `regexes`, `new Number(0)`, 和 `new String('')`，但不包含 `null`、`undefined`、`function`)
+检测 value 是否为 `Object`[类型](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)(如 `arrays`, `dates`, `objects`, `regexes`, `new Number(0)`, 和 `new String('')`，但不包含 `null`、`undefined`、`function`)
 
 **Kind**: global function  
 **Returns**: <code>boolean</code> - 如果 value 是一个 Object 类型，那么返回 true，否则返回 false。  
@@ -42,20 +40,7 @@
 
 **Example**  
 ```js
-isObject({});
-// => true
-
-isObject([1, 2, 3]);
-// => true
-
-isObject(new Date());
-// => true
-
-isObject(noop);
-// => false
-
-isObject(null);
-// => false
+isObject({});// => trueisObject([1, 2, 3]);// => trueisObject(new Date());// => trueisObject(noop);// => falseisObject(null);// => false
 ```
 <a name="isPlainObject"></a>
 
@@ -71,19 +56,5 @@ isObject(null);
 
 **Example**  
 ```js
-function Foo() {
- this.a = 1;
-}
-
-isPlainObject(new Foo);
-// => false
-
-isPlainObject([1, 2, 3]);
-// => false
-
-isPlainObject({ 'x': 0, 'y': 0 });
-// => true
-
-isPlainObject(Object.create(null));
-// => true
+function Foo() { this.a = 1;}isPlainObject(new Foo);// => falseisPlainObject([1, 2, 3]);// => falseisPlainObject({ 'x': 0, 'y': 0 });// => trueisPlainObject(Object.create(null));// => true
 ```
