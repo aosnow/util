@@ -48,7 +48,8 @@
     "@mudas/env": ">=0.0.5",
     "core-js": ">=3.6.5",
     "dayjs": ">=1.10.4",
-    "hash.js": ">=1.1.7"
+    "hash.js": ">=1.1.7",
+    "query-string": ">=7.0.1"
   },
   "devDependencies": {
     "@mudas/env": "0.0.5",
