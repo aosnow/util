@@ -112,3 +112,18 @@ export function isRelativeURL(value): boolean;
  * // => '2021-01-30/upload/xxx.jpg'
  */
 export declare function mergeURL(rootURL: string, ...otherURL: string[]): string;
+
+/**
+ * 解析并设置指定的 query 参数到指定的 url
+ * @param {string|URL} url 绝对地址
+ * @param {object} [query=null] 需要设置的 query 数据集合
+ * @param {boolean|null} [useHistoryMode=null] 是否使用 history 路由模式（若省略，则自动从 url 检测是否包含 # 来判断）
+ * @return {URL|null} 若 url 为非 URL 对象，也不为绝对地址，则返回 null
+ * @example
+ * resetURL('http://www.baidu.com/?k=xxx', {a:1,b:2});
+ * // => URL { href: "http://www.baidu.com/?a=1&b=2&k=xxx", search: "?a=1&b=2&k=xxx", ... }
+ *
+ * resetURL('http://www.baidu.com/#/?k=xxx', {a:1,b:2});
+ * // => URL { hash: "#/?a=1&b=2&k=xxx", href: "http://www.baidu.com/#/?a=1&b=2&k=xxx", search: "", ... }
+ */
+export function resetURL(url: string | URL, query?: object | null, useHistoryMode?: boolean | null): URL | null

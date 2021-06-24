@@ -22,6 +22,9 @@
 <dt><a href="#mergeURL">mergeURL(rootURL, otherURL)</a> ⇒ <code>String</code></dt>
 <dd><p>合并多个URL部分为完整的 URL 地址</p>
 </dd>
+<dt><a href="#resetURL">resetURL(url, [query], [useHistoryMode])</a> ⇒ <code>URL</code> | <code>null</code></dt>
+<dd><p>解析并设置指定的 query 参数到指定的 url</p>
+</dd>
 </dl>
 
 <a name="isURL"></a>
@@ -168,4 +171,26 @@ mergeURL('http://img.xxx.com', '2021-01-30', 'upload/xxx.jpg');
 
 mergeURL('2021-01-30', 'upload/xxx.jpg');
 // => '2021-01-30/upload/xxx.jpg'
+```
+<a name="resetURL"></a>
+
+## resetURL(url, [query], [useHistoryMode]) ⇒ <code>URL</code> \| <code>null</code>
+解析并设置指定的 query 参数到指定的 url
+
+**Kind**: global function  
+**Returns**: <code>URL</code> \| <code>null</code> - 若 url 为非 URL 对象，也不为绝对地址，则返回 null  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| url | <code>string</code> \| <code>URL</code> |  | 绝对地址 |
+| [query] | <code>object</code> | <code></code> | 需要设置的 query 数据集合 |
+| [useHistoryMode] | <code>boolean</code> \| <code>null</code> | <code></code> | 是否使用 history 路由模式（若省略，则自动从 url 检测是否包含 # 来判断） |
+
+**Example**  
+```js
+resetURL('http://www.baidu.com/?k=xxx', {a:1,b:2});
+// => URL { href: "http://www.baidu.com/?a=1&b=2&k=xxx", search: "?a=1&b=2&k=xxx", ... }
+
+resetURL('http://www.baidu.com/#/?k=xxx', {a:1,b:2});
+// => URL { hash: "#/?a=1&b=2&k=xxx", href: "http://www.baidu.com/#/?a=1&b=2&k=xxx", search: "", ... }
 ```

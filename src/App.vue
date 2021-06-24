@@ -49,10 +49,12 @@ import {
   //   random,
   //   distance,
   //   debounce,
-  currency
+  currency,
   //   camelCase,
   //   kebabCase,
   //   snakeCase,
+  transformCase,
+  resetURL
   //   merge,
   //   hash,
   //   get,
@@ -134,6 +136,17 @@ export default {
     // console.warn(snakeCase('Foo Bar'));
     // console.warn(snakeCase('fooBar'));
     // console.warn(snakeCase('--foo-bar--'));
+
+    const o = { a_b: '', aC: { aCa: [{ aCaB: 1 }], aCb: 2 } };
+    transformCase(o, '');
+    console.warn(o);
+
+    const u = resetURL('http://www.baidu.com/?k=xxx', { a: 1, b: 2 });
+    console.warn(u);
+
+    const u2 = resetURL('http://www.baidu.com/#/?k=xxx', { a: 1, b: 2 });
+    console.warn(u2);
+
     // this.testGet();
     // this.testSet();
     //

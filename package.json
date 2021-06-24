@@ -1,8 +1,8 @@
 {
   "name": "@mudas/util",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A tools library of null、boolean、number、string、datetime、object、array、function、url、currency、map",
-  "author": "张雄军 <zxj@blibao.cn>",
+  "author": "mudas(aosnow@yeah.net)",
   "license": "MIT",
   "main": "dist/util.common.js",
   "module": "dist/util.esm.js",
@@ -45,11 +45,13 @@
     "fsevents": "*"
   },
   "peerDependencies": {
+    "@mudas/env": ">=0.0.5",
     "core-js": ">=3.6.5",
     "dayjs": ">=1.10.4",
     "hash.js": ">=1.1.7"
   },
   "devDependencies": {
+    "@mudas/env": "0.0.5",
     "@mudas/reset.css": "0.0.2",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -70,6 +72,7 @@
     "jsdoc-to-markdown": "^6.0.1",
     "lodash-es": "^4.17.21",
     "node-sass": "^5.0.0",
+    "query-string": "^7.0.1",
     "rollup": "^2.6.1",
     "rollup-plugin-delete": "^1.2.0",
     "rollup-plugin-vue": "^5.1.6",
